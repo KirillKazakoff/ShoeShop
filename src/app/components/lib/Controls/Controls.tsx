@@ -9,7 +9,7 @@ export default function Controls() {
             <ControlsIcon cls="header-controls-cart">
                 <Badge className="header-controls-cart-full">1</Badge>
             </ControlsIcon>
-            <Form className="header-controls-search-form form-inline invisible">
+            <Form hidden className="header-controls-search-form">
                 <Form.Control placeholder="Поиск"></Form.Control>
             </Form>
         </Stack>

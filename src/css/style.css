@@ -44,12 +44,6 @@ section {
 }
 
 /* Header */
-.header-controls-pics {
-    display: flex;
-    justify-content: space-between;
-    max-width: 280px;
-    margin-left: auto;
-}
 
 .header-controls-pic {
     height: 32px;

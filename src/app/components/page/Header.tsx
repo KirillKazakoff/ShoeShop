@@ -1,6 +1,16 @@
 import React from 'react';
-import { Col, Container, Navbar, Row, NavbarBrand, Nav } from 'react-bootstrap';
+import {
+    Col,
+    Container,
+    Navbar,
+    Row,
+    NavbarBrand,
+    Nav,
+    NavLink as BootLink,
+} from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import Controls from '../lib/Controls/Controls';
+import RouteLink from '../lib/RouteLink';
 
 export default function HeaderR() {
     return (
@@ -13,15 +23,10 @@ export default function HeaderR() {
                         </NavbarBrand>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link active href="/catalog.html">
-                                    Главная
-                                </Nav.Link>
-                                <Nav.Link href="/about.html">
-                                    О магазине
-                                </Nav.Link>
-                                <Nav.Link href="/contacts.html">
-                                    Контакты
-                                </Nav.Link>
+                                <RouteLink to="/">Главная</RouteLink>
+                                <RouteLink to="/about">О магазине</RouteLink>
+                                <RouteLink to="/contacts">Контакты</RouteLink>
+                                <RouteLink to="/catalog">Каталог</RouteLink>
                             </Nav>
 
                             <Controls />
