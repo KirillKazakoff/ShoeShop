@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/defaultStyle.css';
 import '../css/style.css';
 
@@ -9,7 +10,7 @@ export default function App() {
     return (
         <Router>
             <Routes>
-                <Route path='/' element={<MainR />} />
+                <Route path="/" element={<MainR />} />
             </Routes>
         </Router>
     );
