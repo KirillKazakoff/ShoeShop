@@ -1,10 +1,12 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import Preloader from '../lib/Preloader';
 
 export default function Main() {
     return (
-        <main className="container">
-            <div className="row">
-                <div className="col">
+        <Container as="main">
+            <Row>
+                <Col>
                     <div className="banner">
                         <img
                             src="./img/banner.jpg"
@@ -13,26 +15,18 @@ export default function Main() {
                         />
                         <h2 className="banner-header">К весне готовы!</h2>
                     </div>
+
                     <section className="top-sales">
                         <h2 className="text-center">Хиты продаж!</h2>
-                        <div className="preloader">
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                        </div>
+                        <Preloader />
                     </section>
+
                     <section className="catalog">
                         <h2 className="text-center">Каталог</h2>
-                        <div className="preloader">
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                        </div>
+                        <Preloader />
                     </section>
-                </div>
-            </div>
-        </main>
+                </Col>
+            </Row>
+        </Container>
     );
 }

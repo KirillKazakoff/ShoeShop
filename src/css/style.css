@@ -278,6 +278,8 @@ section {
     background-position: -52px -46px;
 }
 
+
+
 .footer-social-links {
     margin-top: 10px;
 }
@@ -308,6 +310,7 @@ section {
     font-size: 0.8em;
 }
 
+
 .footer-contacts-phone {
     display: block;
 }
@@ -315,6 +318,8 @@ section {
 .footer-contacts-email {
     display: block;
 }
+
+
 
 /* Bootstrap */
 .nav-link.active {

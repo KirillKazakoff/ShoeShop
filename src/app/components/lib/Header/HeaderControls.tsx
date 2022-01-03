@@ -2,7 +2,7 @@ import React from 'react';
 import { Badge, Form, Stack } from 'react-bootstrap';
 import ControlsIcon from './ControlsIcon';
 
-export default function Controls() {
+export default function HeaderControls() {
     return (
         <Stack direction="horizontal" gap={3}>
             <ControlsIcon id="search-expander" cls="header-controls-search" />

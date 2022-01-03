@@ -1,16 +1,8 @@
 import React from 'react';
-import {
-    Col,
-    Container,
-    Navbar,
-    Row,
-    NavbarBrand,
-    Nav,
-    NavLink as BootLink,
-} from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import Controls from '../lib/Controls/Controls';
-import RouteLink from '../lib/RouteLink';
+import { Col, Container, Navbar, Row, NavbarBrand, Nav } from 'react-bootstrap';
+
+import HeaderControls from '../lib/Header/HeaderControls';
+import HeaderNav from '../lib/Header/HeaderNav';
 
 export default function HeaderR() {
     return (
@@ -22,14 +14,8 @@ export default function HeaderR() {
                             <img src="./img/header-logo.png" alt="Bosa Noga" />
                         </NavbarBrand>
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
-                                <RouteLink to="/">Главная</RouteLink>
-                                <RouteLink to="/about">О магазине</RouteLink>
-                                <RouteLink to="/contacts">Контакты</RouteLink>
-                                <RouteLink to="/catalog">Каталог</RouteLink>
-                            </Nav>
-
-                            <Controls />
+                            <HeaderNav />
+                            <HeaderControls />
                         </Navbar.Collapse>
                     </Navbar>
                 </Col>
