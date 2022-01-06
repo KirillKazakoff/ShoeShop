@@ -1,17 +1,29 @@
-import { Dispatch, SetStateAction } from 'react';
+export interface ContentType {
+    id: number;
+    title: string;
+    images: string[];
+    price: number;
+    category: number;
+}
 
-export const initContent = [
-    {
-        service: 'Замена стекла',
-        amount: '21000',
-        id: '1',
-    },
-    {
-        service: 'Замена дисплея',
-        amount: '35000',
-        id: '2',
-    },
-];
+export interface Size {
+    size: string;
+    avalible: boolean;
+}
 
-export type ContentType = typeof initContent[0] & { desc?: string };
-export type SetPostType = Dispatch<SetStateAction<ContentType[]>>;
+export interface ContentTypeFull {
+    id: number;
+    category: number;
+    title: string;
+    images: string[];
+    sku: string;
+    manufacturer: string;
+    color: string;
+    material: string;
+    reason: string;
+    season: string;
+    heelSize: string;
+    price: number;
+    oldPrice: number;
+    sizes: Size[];
+}

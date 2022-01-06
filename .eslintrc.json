@@ -94,11 +94,21 @@
         "react/jsx-max-props-per-line": [
             1,
             {
-                "maximum": 2,
-                "multi": 2,
-                "when": "always"
+                "maximum": 2
+            }
+        ],
+        "react/no-unescaped-entities": [
+            "error",
+            {
+                "forbid": [
+                    {
+                        "char": "'",
+                        "alternatives": [
+                            "&apos"
+                        ]
+                    }
+                ]
             }
         ]
-        // "react/jsx-first-prop-new-line": "multiline"
     }
 }

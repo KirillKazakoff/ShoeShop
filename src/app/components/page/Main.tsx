@@ -1,30 +1,33 @@
-import React from 'react';
+/* eslint-disable react/no-unescaped-entities */
+import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Preloader from '../lib/Preloader';
+import { useAppSelector, useAppDispatch } from '../../data/reduxHooks';
+import { selectTopSales, selectItems } from '../../redux/contentSlice';
+import { getItems, getTopSalesItems } from '../../logic/thunkApi';
+import Section from '../lib/Main/Section';
 
 export default function Main() {
+    const topSalesItems = useAppSelector(selectTopSales);
+    const items = useAppSelector(selectItems);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getTopSalesItems());
+        dispatch(getItems());
+    }, []);
+
     return (
-        <Container as="main">
-            <Row>
+        <Container as='main' className='pt-sm-4'>
+            <Row className='gy-3'>
+                <Col className='gy-5 col-12'>
+                    <Section className='top-sales' contentArray={topSalesItems}>
+                        Хиты продаж
+                    </Section>
+                </Col>
                 <Col>
-                    <div className="banner">
-                        <img
-                            src="./img/banner.jpg"
-                            className="img-fluid"
-                            alt="К весне готовы!"
-                        />
-                        <h2 className="banner-header">К весне готовы!</h2>
-                    </div>
-
-                    <section className="top-sales">
-                        <h2 className="text-center">Хиты продаж!</h2>
-                        <Preloader />
-                    </section>
-
-                    <section className="catalog">
-                        <h2 className="text-center">Каталог</h2>
-                        <Preloader />
-                    </section>
+                    <Section className='catalog col-12' contentArray={items}>
+                        Каталог
+                    </Section>
                 </Col>
             </Row>
         </Container>
