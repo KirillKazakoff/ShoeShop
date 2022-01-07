@@ -1,16 +1,14 @@
 import { Nav } from 'react-bootstrap';
-import RouteLink from '../RouteLink';
 import React from 'react';
+import RouteLink from '../RouteLink';
 
-type HeaderNavProps = {};
-
-export default function HeaderNav({}: HeaderNavProps) {
+export default function HeaderNav() {
     return (
-        <Nav className="me-auto">
-            <RouteLink to="/">Главная</RouteLink>
-            <RouteLink to="/about">О магазине</RouteLink>
-            <RouteLink to="/contacts">Контакты</RouteLink>
-            <RouteLink to="/catalog">Каталог</RouteLink>
+        <Nav className='me-auto'>
+            <RouteLink to='/'>Главная</RouteLink>
+            <RouteLink to='/about'>О магазине</RouteLink>
+            <RouteLink to='/contacts'>Контакты</RouteLink>
+            <RouteLink to='/catalog'>Каталог</RouteLink>
         </Nav>
     );
 }

@@ -104,7 +104,7 @@
                     {
                         "char": "'",
                         "alternatives": [
-                            "&apos"
+                            "&apos;"
                         ]
                     }
                 ]

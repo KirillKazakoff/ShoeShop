@@ -27,3 +27,8 @@ export interface ContentTypeFull {
     oldPrice: number;
     sizes: Size[];
 }
+
+export type CategoryType = {
+    id: number;
+    title: string;
+};

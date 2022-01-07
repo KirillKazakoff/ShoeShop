@@ -62,7 +62,7 @@ export const getTopSalesItems = (): AppThunk => async (dispatch) => {
 export const getCategories = (): AppThunk => async (dispatch) => {
     dispatch(setTableStatus('loading'));
 
-    const reqObj = { url: 'top-sales', settings: undefined };
+    const reqObj = { url: 'categories', settings: undefined };
     const res = await dispatch(request(reqObj, setTableStatus));
 
     if (!res) return;
