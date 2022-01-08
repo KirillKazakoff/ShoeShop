@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import Section from '../Section';
 import SectionTitle from '../SectionTitle';
 import Categories from './Categories';
@@ -11,14 +12,20 @@ import {
 } from '../../../redux/contentSlice';
 import { getItems, getCategories } from '../../../logic/thunkApi';
 import { CategoryType } from '../../../data/initContent';
+import LoadButton from '../LoadButton';
+import { selectCategoriesStatus, selectCatalogStatus } from '../../../redux/statusSlice';
 
 export type CategoryClick = (category: CategoryType) => () => void;
 
 export default function Catalog() {
     const dispatch = useAppDispatch();
+
     const items = useAppSelector(selectItems);
     const activeCategory = useAppSelector(selectCategory);
     const categories = useAppSelector(selectCategories);
+
+    const statusCategories = useAppSelector(selectCategoriesStatus);
+    const statusCatalog = useAppSelector(selectCatalogStatus);
 
     const onCategoryClick: CategoryClick = (category) => () => {
         dispatch(setCategory(category));
@@ -30,13 +37,16 @@ export default function Catalog() {
     }, [dispatch, activeCategory]);
 
     return (
-        <Section className='catalog col-12' contentArray={items}>
-            <SectionTitle>Каталог</SectionTitle>
-            <Categories
-                onClick={onCategoryClick}
-                categoriesData={categories}
-                activeCategory={activeCategory}
-            />
-        </Section>
+        <div className='mb-5'>
+            <Section className='catalog' contentArray={items}>
+                <SectionTitle>Каталог</SectionTitle>
+                <Categories
+                    onClick={onCategoryClick}
+                    categoriesData={categories}
+                    activeCategory={activeCategory}
+                />
+            </Section>
+            <LoadButton>Загрузить еще</LoadButton>
+        </div>
     );
 }

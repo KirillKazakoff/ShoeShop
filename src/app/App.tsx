@@ -8,6 +8,7 @@ import PageRoute from './components/routes/PageRoute';
 import Main from './components/page/Main';
 import AboutRoute from './components/routes/AboutRoute';
 import ContactsRoute from './components/routes/ContactsRoute';
+import Catalog from './components/lib/Main/Catalog';
 
 export default function App() {
     return (
@@ -15,7 +16,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<PageRoute />}>
                     <Route path='/' element={<Main />} />
-                    <Route path='/catalog' element={<div>Catalog!!!</div>} />
+                    <Route path='/catalog' element={<Catalog />} />
                     <Route path='/about' element={<AboutRoute />} />
                     <Route path='/contacts' element={<ContactsRoute />} />
                 </Route>

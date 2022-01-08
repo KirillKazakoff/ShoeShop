@@ -1,6 +1,6 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { setCategories, setItems, setTopSalesItems } from '../redux/contentSlice';
-import { setTableStatus, Status } from '../redux/statusSlice';
+import { setCategoriesStatus, setCatalogStatus, Status } from '../redux/statusSlice';
 import { AppThunk } from '../redux/store';
 
 const baseUrl = 'http://localhost:7070';
@@ -32,44 +32,44 @@ const request: RequestType = (reqObj, setStatus) => async (dispatch) => {
 };
 
 export const getItems = (categoryId: number): AppThunk => async (dispatch) => {
-    dispatch(setTableStatus('loading'));
+    dispatch(setCatalogStatus('loading'));
 
     const url = categoryId === 0 ? 'items' : `items?categoryId=${categoryId}`;
     const reqObj = { url, settings: undefined };
-    const res = await dispatch(request(reqObj, setTableStatus));
+    const res = await dispatch(request(reqObj, setCatalogStatus));
 
     if (!res) return;
 
     const resData = await res.json();
     dispatch(setItems(resData));
 
-    dispatch(setTableStatus('loaded'));
+    dispatch(setCatalogStatus('loaded'));
 };
 
 export const getTopSalesItems = (): AppThunk => async (dispatch) => {
-    dispatch(setTableStatus('loading'));
+    dispatch(setCatalogStatus('loading'));
 
     const reqObj = { url: 'top-sales', settings: undefined };
-    const res = await dispatch(request(reqObj, setTableStatus));
+    const res = await dispatch(request(reqObj, setCatalogStatus));
 
     if (!res) return;
 
     const resData = await res.json();
     dispatch(setTopSalesItems(resData));
 
-    dispatch(setTableStatus('loaded'));
+    dispatch(setCatalogStatus('loaded'));
 };
 
 export const getCategories = (): AppThunk => async (dispatch) => {
-    dispatch(setTableStatus('loading'));
+    dispatch(setCategoriesStatus('loading'));
 
     const reqObj = { url: 'categories', settings: undefined };
-    const res = await dispatch(request(reqObj, setTableStatus));
+    const res = await dispatch(request(reqObj, setCategoriesStatus));
 
     if (!res) return;
 
     const resData = await res.json();
     dispatch(setCategories(resData));
 
-    dispatch(setTableStatus('loaded'));
+    dispatch(setCategoriesStatus('loaded'));
 };

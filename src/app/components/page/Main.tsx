@@ -28,7 +28,7 @@ export default function Main() {
                         <SectionTitle>Хиты продаж</SectionTitle>
                     </Section>
                 </Col>
-                <Col>
+                <Col className='col-12'>
                     <Catalog />
                 </Col>
             </Row>

@@ -6,12 +6,14 @@ export type Status = 'idle' | 'loading' | 'loaded' | 'failed';
 
 export type StatusState = {
     formStatus: Status;
-    tableStatus: Status;
+    catalogStatus: Status;
+    categoriesStatus: Status;
 };
 
 const initialState: StatusState = {
     formStatus: 'idle',
-    tableStatus: 'idle',
+    catalogStatus: 'idle',
+    categoriesStatus: 'idle',
 };
 
 export const statusSlice = createSlice({
@@ -21,15 +23,19 @@ export const statusSlice = createSlice({
         setFormStatus: (state, action: PayloadAction<Status>) => {
             state.formStatus = action.payload;
         },
-        setTableStatus: (state, action: PayloadAction<Status>) => {
-            state.tableStatus = action.payload;
+        setCatalogStatus: (state, action: PayloadAction<Status>) => {
+            state.catalogStatus = action.payload;
+        },
+        setCategoriesStatus: (state, action: PayloadAction<Status>) => {
+            state.categoriesStatus = action.payload;
         },
     },
 });
 
-export const { setFormStatus, setTableStatus } = statusSlice.actions;
+export const { setFormStatus, setCatalogStatus, setCategoriesStatus } = statusSlice.actions;
 
 export const selectFormStatus = (state: RootState) => state.statuses.formStatus;
-export const selectTableStatus = (state: RootState) => state.statuses.tableStatus;
+export const selectCatalogStatus = (state: RootState) => state.statuses.catalogStatus;
+export const selectCategoriesStatus = (state: RootState) => state.statuses.categoriesStatus;
 
 export default statusSlice.reducer;

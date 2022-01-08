@@ -1,10 +1,12 @@
 import React from 'react';
+import { Status } from '../../redux/statusSlice';
 
-type PreloaderProps = {};
+type PreloaderProps = { status: Status };
 
-export default function Preloader({}: PreloaderProps) {
+export default function Preloader({ status }: PreloaderProps) {
+    if (status === 'failed') return <div>Error!!!</div>;
     return (
-        <div className="preloader">
+        <div className='preloader'>
             <span />
             <span />
             <span />
