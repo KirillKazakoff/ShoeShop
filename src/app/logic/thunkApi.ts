@@ -1,6 +1,12 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { setCategories, setItems, setTopSalesItems } from '../redux/contentSlice';
-import { setCategoriesStatus, setCatalogStatus, Status } from '../redux/statusSlice';
+import {
+    setCategoriesStatus,
+    setItemsStatus,
+    setFormStatus,
+    setTopSalesItemsStatus,
+    Status,
+} from '../redux/statusSlice';
 import { AppThunk } from '../redux/store';
 
 const baseUrl = 'http://localhost:7070';
@@ -32,32 +38,32 @@ const request: RequestType = (reqObj, setStatus) => async (dispatch) => {
 };
 
 export const getItems = (categoryId: number): AppThunk<Promise<void>> => async (dispatch) => {
-    dispatch(setCatalogStatus('loading'));
+    dispatch(setItemsStatus('loading'));
 
     const url = categoryId === 0 ? 'items' : `items?categoryId=${categoryId}`;
     const reqObj = { url, settings: undefined };
-    const res = await dispatch(request(reqObj, setCatalogStatus));
+    const res = await dispatch(request(reqObj, setItemsStatus));
 
     if (!res) return;
 
     const resData = await res.json();
     dispatch(setItems(resData));
 
-    dispatch(setCatalogStatus('loaded'));
+    dispatch(setItemsStatus('loaded'));
 };
 
 export const getTopSalesItems = (): AppThunk => async (dispatch) => {
-    dispatch(setCatalogStatus('loading'));
+    dispatch(setTopSalesItemsStatus('loading'));
 
     const reqObj = { url: 'top-sales', settings: undefined };
-    const res = await dispatch(request(reqObj, setCatalogStatus));
+    const res = await dispatch(request(reqObj, setTopSalesItemsStatus));
 
     if (!res) return;
 
     const resData = await res.json();
     dispatch(setTopSalesItems(resData));
 
-    dispatch(setCatalogStatus('loaded'));
+    dispatch(setTopSalesItemsStatus('loaded'));
 };
 
 export const getCategories = (): AppThunk<Promise<boolean>> => async (dispatch) => {
@@ -70,11 +76,13 @@ export const getCategories = (): AppThunk<Promise<boolean>> => async (dispatch) 
 
     const resData = await res.json();
     dispatch(setCategories(resData));
+    dispatch(setCategoriesStatus('loaded'));
     return true;
 };
 
-export const getCatalog = (id: number): AppThunk<Promise<void>> => async (dispatch) => {
-    dispatch(setCatalogStatus('loading'));
-    await dispatch(getCategories());
-    await dispatch(getItems(id));
-};
+// export const getCatalog = (id: number): AppThunk<Promise<void>> => async (dispatch) => {
+//     dispatch(setItemsStatus('loading'));
+//     await dispatch(getCategories());
+//     await dispatch(getItems(id));
+//     dispatch(setItemsStatus('loaded'));
+// };

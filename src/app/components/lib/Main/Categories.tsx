@@ -4,6 +4,8 @@ import { CategoryType } from '../../../data/initContent';
 import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
 import { getItems, getCategories } from '../../../logic/thunkApi';
 import { setCategory, selectCategories } from '../../../redux/contentSlice';
+import { selectCategoriesStatus, setCatalogStatus } from '../../../redux/statusSlice';
+import Preloader from '../Preloader';
 
 type CategoriesProps = {
     activeCategory: CategoryType;
@@ -31,6 +33,7 @@ function Category({ category, isActive }: CategoryProps) {
 
 export default function Categories({ activeCategory }: CategoriesProps) {
     const categoriesData = useAppSelector(selectCategories);
+    const status = useAppSelector(selectCategoriesStatus);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -38,8 +41,13 @@ export default function Categories({ activeCategory }: CategoriesProps) {
     }, []);
 
     const categories = categoriesData.map((item) => (
-        <Category category={item} isActive={item.id === activeCategory.id} />
+        <Category
+            key={item.id}
+            category={item}
+            isActive={item.id === activeCategory.id}
+        />
     ));
 
+    dispatch(setCatalogStatus(status));
     return <Nav className='fs-4 mb-5 justify-content-center'>{categories}</Nav>;
 }

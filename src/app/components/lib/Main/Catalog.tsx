@@ -1,32 +1,28 @@
-import React, { useEffect } from 'react';
-import Section from '../Section';
+import React from 'react';
 import SectionTitle from '../SectionTitle';
-import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
-import { selectItems, selectCategory } from '../../../redux/contentSlice';
-import { getItems } from '../../../logic/thunkApi';
+import { useAppSelector } from '../../../data/reduxHooks';
+import { selectCategory } from '../../../redux/contentSlice';
+
 import { CategoryType } from '../../../data/initContent';
 import LoadButton from '../LoadButton';
 import Categories from './Categories';
+import CatalogItems from './CatalogItems';
+import { selectCatalogStatus } from '../../../redux/statusSlice';
+import Preloader from '../Preloader';
 
 export type CategoryClick = (category: CategoryType) => () => void;
 
 export default function Catalog() {
-    const dispatch = useAppDispatch();
-
-    const items = useAppSelector(selectItems);
     const activeCategory = useAppSelector(selectCategory);
+    const status = useAppSelector(selectCatalogStatus);
 
-    useEffect(() => {
-        dispatch(getItems(activeCategory.id));
-    }, [dispatch, activeCategory]);
-
+    if (status !== 'loaded') return <Preloader status={status} />;
     return (
-        <div className='mb-5'>
-            <Section className='catalog' contentArray={items}>
-                <SectionTitle>Каталог</SectionTitle>
-                <Categories activeCategory={activeCategory} />
-            </Section>
+        <section className='catalog mb-5'>
+            <SectionTitle>Каталог</SectionTitle>
+            <Categories activeCategory={activeCategory} />
+            <CatalogItems activeCategory={activeCategory} />
             <LoadButton>Загрузить еще</LoadButton>
-        </div>
+        </section>
     );
 }

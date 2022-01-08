@@ -6,16 +6,18 @@ export type Status = 'idle' | 'loading' | 'loaded' | 'failed';
 
 export type StatusState = {
     formStatus: Status;
-    catalogStatus: Status;
+    topSalesItemsStatus: Status;
+    itemsStatus: Status;
     categoriesStatus: Status;
-    catalogCompStatus: Status;
+    catalogStatus: Status;
 };
 
 const initialState: StatusState = {
     formStatus: 'idle',
-    catalogStatus: 'idle',
-    catalogCompStatus: 'idle',
+    topSalesItemsStatus: 'idle',
+    itemsStatus: 'idle',
     categoriesStatus: 'idle',
+    catalogStatus: 'idle',
 };
 
 export const statusSlice = createSlice({
@@ -25,19 +27,33 @@ export const statusSlice = createSlice({
         setFormStatus: (state, action: PayloadAction<Status>) => {
             state.formStatus = action.payload;
         },
-        setCatalogStatus: (state, action: PayloadAction<Status>) => {
-            state.catalogStatus = action.payload;
+        setItemsStatus: (state, action: PayloadAction<Status>) => {
+            state.itemsStatus = action.payload;
         },
         setCategoriesStatus: (state, action: PayloadAction<Status>) => {
             state.categoriesStatus = action.payload;
         },
+        setCatalogStatus: (state, action: PayloadAction<Status>) => {
+            state.catalogStatus = action.payload;
+        },
+        setTopSalesItemsStatus: (state, action: PayloadAction<Status>) => {
+            state.topSalesItemsStatus = action.payload;
+        },
     },
 });
 
-export const { setFormStatus, setCatalogStatus, setCategoriesStatus } = statusSlice.actions;
+export const {
+    setFormStatus,
+    setTopSalesItemsStatus,
+    setItemsStatus,
+    setCategoriesStatus,
+    setCatalogStatus,
+} = statusSlice.actions;
 
 export const selectFormStatus = (state: RootState) => state.statuses.formStatus;
-export const selectCatalogStatus = (state: RootState) => state.statuses.catalogStatus;
+export const selectItemsStatus = (state: RootState) => state.statuses.itemsStatus;
 export const selectCategoriesStatus = (state: RootState) => state.statuses.categoriesStatus;
+export const selectTopSalesItemsStatus = (state: RootState) => state.statuses.topSalesItemsStatus;
+export const selectCatalogStatus = (state: RootState) => state.statuses.catalogStatus;
 
 export default statusSlice.reducer;

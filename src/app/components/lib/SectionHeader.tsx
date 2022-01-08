@@ -1,13 +1,7 @@
 import React from 'react';
-import SectionTitle from './SectionTitle';
 
-type SectionHeaderProps = { children: React.ReactNode; title: string };
+type SectionHeaderProps = { children: React.ReactNode };
 
-export default function SectionHeader({ children, title }: SectionHeaderProps) {
-    return (
-        <header>
-            <SectionTitle>{title}</SectionTitle>
-            {children}
-        </header>
-    );
+export default function SectionHeader({ children }: SectionHeaderProps) {
+    return <header>{children}</header>;
 }

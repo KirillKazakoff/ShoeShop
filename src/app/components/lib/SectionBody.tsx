@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { ContentType } from '../../data/initContent';
 import Item from './Item';
 
@@ -12,5 +12,5 @@ export default function SectionBody({ contentArray }: SectionBodyProps) {
         </Col>
     ));
 
-    return <div>{items}</div>;
+    return <Row className='gy-4'>{items}</Row>;
 }
