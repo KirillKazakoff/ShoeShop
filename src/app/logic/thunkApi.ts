@@ -31,10 +31,11 @@ const request: RequestType = (reqObj, setStatus) => async (dispatch) => {
     return res;
 };
 
-export const getItems = (): AppThunk => async (dispatch) => {
+export const getItems = (categoryId: number): AppThunk => async (dispatch) => {
     dispatch(setTableStatus('loading'));
 
-    const reqObj = { url: 'items', settings: undefined };
+    const url = categoryId === 0 ? 'items' : `items?categoryId=${categoryId}`;
+    const reqObj = { url, settings: undefined };
     const res = await dispatch(request(reqObj, setTableStatus));
 
     if (!res) return;

@@ -2,27 +2,24 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useAppSelector, useAppDispatch } from '../../data/reduxHooks';
-import { selectTopSales, selectItems, selectCategories } from '../../redux/contentSlice';
+import { selectTopSales } from '../../redux/contentSlice';
 import { getItems, getTopSalesItems, getCategories } from '../../logic/thunkApi';
 import Section from '../lib/Section';
 import SectionTitle from '../lib/SectionTitle';
 import Categories from '../lib/Main/Categories';
+import Catalog from '../lib/Main/Catalog';
 
 export default function Main() {
     const topSalesItems = useAppSelector(selectTopSales);
-    const items = useAppSelector(selectItems);
-    const categories = useAppSelector(selectCategories);
     const dispatch = useAppDispatch();
 
-    console.log(categories);
+    console.log(topSalesItems);
 
     useEffect(() => {
         dispatch(getTopSalesItems());
-        dispatch(getItems());
-        dispatch(getCategories());
     }, []);
 
-    if (categories.length === 0) return <div>Loading...</div>;
+    if (topSalesItems.length === 0) return <div>Loading...</div>;
     return (
         <Container as='main' className='pt-sm-4'>
             <Row className='gy-3'>
@@ -32,10 +29,7 @@ export default function Main() {
                     </Section>
                 </Col>
                 <Col>
-                    <Section className='catalog col-12' contentArray={items}>
-                        <SectionTitle>Каталог</SectionTitle>
-                        <Categories categoriesData={categories} />
-                    </Section>
+                    <Catalog />
                 </Col>
             </Row>
         </Container>

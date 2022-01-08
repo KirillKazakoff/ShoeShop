@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
@@ -9,14 +10,19 @@ export interface ContentState {
     item: ContentTypeFull | null;
     topSalesItems: ContentType[];
     categories: CategoryType[];
+    category: CategoryType;
     filter: string;
 }
 
 const initialState: ContentState = {
     items: [],
+    item: null,
     topSalesItems: [],
     categories: [],
-    item: null,
+    category: {
+        id: 0,
+        title: 'Все',
+    },
     filter: '',
 };
 
@@ -27,19 +33,22 @@ export const contentSlice = createSlice({
         setItems: (state, action: PayloadAction<ContentType[]>) => {
             state.items = action.payload;
         },
+        setItem: (state, action: PayloadAction<ContentTypeFull>) => {
+            state.item = action.payload;
+        },
         setTopSalesItems: (state, action: PayloadAction<ContentType[]>) => {
             state.topSalesItems = action.payload;
         },
         setCategories: (state, action: PayloadAction<CategoryType[]>) => {
             state.categories = action.payload;
         },
-        setItem: (state, action: PayloadAction<ContentTypeFull>) => {
-            state.item = action.payload;
+        setCategory: (state, action: PayloadAction<CategoryType>) => {
+            state.category = action.payload;
         },
     },
 });
 
-export const { setItems, setCategories, setTopSalesItems, setItem } = contentSlice.actions;
+export const { setItems, setCategories, setCategory, setTopSalesItems, setItem } = contentSlice.actions;
 
 export const selectItems = (state: RootState) => state.content.items;
 export const selectTopSales = (state: RootState) => state.content.topSalesItems;
@@ -49,5 +58,6 @@ export const selectCategories = (state: RootState) => [
     { id: 0, title: 'Все' },
     ...state.content.categories,
 ];
+export const selectCategory = (state: RootState) => state.content.category;
 
 export default contentSlice.reducer;

@@ -1,6 +1,6 @@
 import { Card, CardProps } from 'react-bootstrap';
 import React from 'react';
-import { ContentType } from '../../../data/initContent';
+import { ContentType } from '../../data/initContent';
 
 type ItemProps = CardProps & {
     content: ContentType;
