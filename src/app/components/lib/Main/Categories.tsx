@@ -9,6 +9,10 @@ type CategoriesProps = {
     activeCategory: CategoryType;
 };
 
+type Category = { category: CategoryType };
+
+function Category({ category }: Category);
+
 export default function Categories(props: CategoriesProps) {
     const { categoriesData, onClick, activeCategory } = props;
 

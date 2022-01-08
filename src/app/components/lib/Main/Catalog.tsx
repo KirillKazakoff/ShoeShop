@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
 import Section from '../Section';
 import SectionTitle from '../SectionTitle';
-import Categories from './Categories';
 import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
 import {
     selectItems,
@@ -13,7 +11,7 @@ import {
 import { getItems, getCategories } from '../../../logic/thunkApi';
 import { CategoryType } from '../../../data/initContent';
 import LoadButton from '../LoadButton';
-import { selectCategoriesStatus, selectCatalogStatus } from '../../../redux/statusSlice';
+import Categories from './Categories';
 
 export type CategoryClick = (category: CategoryType) => () => void;
 
@@ -23,9 +21,6 @@ export default function Catalog() {
     const items = useAppSelector(selectItems);
     const activeCategory = useAppSelector(selectCategory);
     const categories = useAppSelector(selectCategories);
-
-    const statusCategories = useAppSelector(selectCategoriesStatus);
-    const statusCatalog = useAppSelector(selectCatalogStatus);
 
     const onCategoryClick: CategoryClick = (category) => () => {
         dispatch(setCategory(category));
