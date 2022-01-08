@@ -8,6 +8,7 @@ import { selectCategoriesStatus, setCatalogStatus } from '../../../redux/statusS
 import Preloader from '../Preloader';
 
 type CategoriesProps = {
+    categoriesData: CategoryType[];
     activeCategory: CategoryType;
 };
 
@@ -31,15 +32,7 @@ function Category({ category, isActive }: CategoryProps) {
     );
 }
 
-export default function Categories({ activeCategory }: CategoriesProps) {
-    const categoriesData = useAppSelector(selectCategories);
-    const status = useAppSelector(selectCategoriesStatus);
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(getCategories());
-    }, []);
-
+export default function Categories({ categoriesData, activeCategory }: CategoriesProps) {
     const categories = categoriesData.map((item) => (
         <Category
             key={item.id}
@@ -48,6 +41,5 @@ export default function Categories({ activeCategory }: CategoriesProps) {
         />
     ));
 
-    dispatch(setCatalogStatus(status));
     return <Nav className='fs-4 mb-5 justify-content-center'>{categories}</Nav>;
 }

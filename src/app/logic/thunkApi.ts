@@ -6,6 +6,7 @@ import {
     setFormStatus,
     setTopSalesItemsStatus,
     Status,
+    setCatalogStatus,
 } from '../redux/statusSlice';
 import { AppThunk } from '../redux/store';
 
@@ -37,19 +38,20 @@ const request: RequestType = (reqObj, setStatus) => async (dispatch) => {
     return res;
 };
 
-export const getItems = (categoryId: number): AppThunk<Promise<void>> => async (dispatch) => {
+export const getItems = (categoryId: number): AppThunk<Promise<boolean>> => async (dispatch) => {
     dispatch(setItemsStatus('loading'));
 
     const url = categoryId === 0 ? 'items' : `items?categoryId=${categoryId}`;
     const reqObj = { url, settings: undefined };
-    const res = await dispatch(request(reqObj, setItemsStatus));
+    const res = await dispatch(request(reqObj, setCatalogStatus));
 
-    if (!res) return;
+    if (!res) return false;
 
     const resData = await res.json();
     dispatch(setItems(resData));
 
     dispatch(setItemsStatus('loaded'));
+    return true;
 };
 
 export const getTopSalesItems = (): AppThunk => async (dispatch) => {
@@ -67,22 +69,28 @@ export const getTopSalesItems = (): AppThunk => async (dispatch) => {
 };
 
 export const getCategories = (): AppThunk<Promise<boolean>> => async (dispatch) => {
-    dispatch(setCategoriesStatus('loading'));
-
     const reqObj = { url: 'categories', settings: undefined };
-    const res = await dispatch(request(reqObj, setCategoriesStatus));
+    const res = await dispatch(request(reqObj, setCatalogStatus));
 
     if (!res) return false;
 
     const resData = await res.json();
     dispatch(setCategories(resData));
-    dispatch(setCategoriesStatus('loaded'));
+
     return true;
 };
 
-// export const getCatalog = (id: number): AppThunk<Promise<void>> => async (dispatch) => {
-//     dispatch(setItemsStatus('loading'));
-//     await dispatch(getCategories());
-//     await dispatch(getItems(id));
-//     dispatch(setItemsStatus('loaded'));
-// };
+export const getCatalog = (id: number): AppThunk<Promise<boolean>> => async (dispatch) => {
+    dispatch(setCatalogStatus('loading'));
+
+    const resCategories = await dispatch(getCategories());
+    const resItems = await dispatch(getItems(id));
+
+    if (!resItems || !resCategories) {
+        dispatch(setCatalogStatus('failed'));
+        return false;
+    }
+
+    dispatch(setCatalogStatus('loaded'));
+    return true;
+};
