@@ -1,36 +1,29 @@
 import React from 'react';
-import { NavLink, Nav, NavLinkProps } from 'react-bootstrap';
+import { NavLink, Nav } from 'react-bootstrap';
 import { CategoryType } from '../../../data/initContent';
-import { setCategory } from '../../../redux/contentSlice';
-import { useAppDispatch } from '../../../data/reduxHooks';
+import { setCategory, selectCategory } from '../../../redux/contentSlice';
+import { useAppDispatch, useAppSelector } from '../../../data/reduxHooks';
 
-type CategoryProps = NavLinkProps & { category: CategoryType };
 type CategoriesProps = { categoriesData: CategoryType[] };
 
-const Category = ({ category, ...props }: CategoryProps) => {
+export default function Categories({ categoriesData }: CategoriesProps) {
     const dispatch = useAppDispatch();
-    const onClick = () => {
+    const activeCategory = useAppSelector(selectCategory);
+
+    const onClick = (category: CategoryType) => () => {
         dispatch(setCategory(category));
     };
 
-    return (
+    const categories = categoriesData.map((item) => (
         <Nav.Item>
             <NavLink
-                id={category.id.toString()} {...props}
-                onClick={onClick}
+                id={item.id.toString()}
+                onClick={onClick(item)}
+                active={item.id === activeCategory.id}
             >
-                {category.title}
+                {item.title}
             </NavLink>
         </Nav.Item>
-    );
-};
-
-export default function Categories({ categoriesData }: CategoriesProps) {
-    const categories = categoriesData.map((item, index) => (
-        <Category
-            active={index === 0} category={item}
-            key={item.id}
-        />
     ));
 
     return <Nav className='fs-4 mb-5 justify-content-center'>{categories}</Nav>;
