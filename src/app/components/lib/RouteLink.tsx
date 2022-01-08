@@ -7,7 +7,7 @@ type RouteLinkProps = { to: string; children: string };
 export default function RouteLink({ to, children }: RouteLinkProps) {
     return (
         <NavLink to={to}>
-            <BootLink as="span">{children}</BootLink>
+            <BootLink as='span'>{children}</BootLink>
         </NavLink>
     );
 }

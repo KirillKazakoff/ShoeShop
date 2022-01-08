@@ -1,31 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Nav } from 'react-bootstrap';
 import { CategoryType } from '../../../data/initContent';
-import type { CategoryClick } from './Catalog';
+import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
+import { getItems, getCategories } from '../../../logic/thunkApi';
+import { setCategory, selectCategories } from '../../../redux/contentSlice';
 
 type CategoriesProps = {
-    categoriesData: CategoryType[];
-    onClick: CategoryClick;
     activeCategory: CategoryType;
 };
 
-type Category = { category: CategoryType };
+type CategoryProps = { category: CategoryType; isActive: boolean };
 
-function Category({ category }: Category);
+function Category({ category, isActive }: CategoryProps) {
+    const dispatch = useAppDispatch();
 
-export default function Categories(props: CategoriesProps) {
-    const { categoriesData, onClick, activeCategory } = props;
-
-    const categories = categoriesData.map((item) => (
+    const onClick = () => {
+        dispatch(setCategory(category));
+    };
+    return (
         <Nav.Item>
             <NavLink
-                id={item.id.toString()}
-                onClick={onClick(item)}
-                active={item.id === activeCategory.id}
+                id={category.id.toString()} onClick={onClick}
+                active={isActive}
             >
-                {item.title}
+                {category.title}
             </NavLink>
         </Nav.Item>
+    );
+}
+
+export default function Categories({ activeCategory }: CategoriesProps) {
+    const categoriesData = useAppSelector(selectCategories);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getCategories());
+    }, []);
+
+    const categories = categoriesData.map((item) => (
+        <Category category={item} isActive={item.id === activeCategory.id} />
     ));
 
     return <Nav className='fs-4 mb-5 justify-content-center'>{categories}</Nav>;

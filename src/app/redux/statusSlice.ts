@@ -8,11 +8,13 @@ export type StatusState = {
     formStatus: Status;
     catalogStatus: Status;
     categoriesStatus: Status;
+    catalogCompStatus: Status;
 };
 
 const initialState: StatusState = {
     formStatus: 'idle',
     catalogStatus: 'idle',
+    catalogCompStatus: 'idle',
     categoriesStatus: 'idle',
 };
 
