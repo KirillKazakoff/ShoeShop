@@ -1,18 +1,16 @@
 import React from 'react';
 import { NavLink, Nav } from 'react-bootstrap';
 import { CategoryType } from '../../../data/initContent';
-import { setCategory, selectCategory } from '../../../redux/contentSlice';
-import { useAppDispatch, useAppSelector } from '../../../data/reduxHooks';
+import type { CategoryClick } from './Catalog';
 
-type CategoriesProps = { categoriesData: CategoryType[] };
+type CategoriesProps = {
+    categoriesData: CategoryType[];
+    onClick: CategoryClick;
+    activeCategory: CategoryType;
+};
 
-export default function Categories({ categoriesData }: CategoriesProps) {
-    const dispatch = useAppDispatch();
-    const activeCategory = useAppSelector(selectCategory);
-
-    const onClick = (category: CategoryType) => () => {
-        dispatch(setCategory(category));
-    };
+export default function Categories(props: CategoriesProps) {
+    const { categoriesData, onClick, activeCategory } = props;
 
     const categories = categoriesData.map((item) => (
         <Nav.Item>

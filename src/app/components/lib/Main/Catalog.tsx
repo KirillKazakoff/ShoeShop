@@ -7,14 +7,22 @@ import {
     selectItems,
     selectCategories,
     selectCategory,
+    setCategory,
 } from '../../../redux/contentSlice';
 import { getItems, getCategories } from '../../../logic/thunkApi';
+import { CategoryType } from '../../../data/initContent';
+
+export type CategoryClick = (category: CategoryType) => () => void;
 
 export default function Catalog() {
     const dispatch = useAppDispatch();
     const items = useAppSelector(selectItems);
     const activeCategory = useAppSelector(selectCategory);
     const categories = useAppSelector(selectCategories);
+
+    const onCategoryClick: CategoryClick = (category) => () => {
+        dispatch(setCategory(category));
+    };
 
     useEffect(() => {
         dispatch(getItems(activeCategory.id));
@@ -24,7 +32,11 @@ export default function Catalog() {
     return (
         <Section className='catalog col-12' contentArray={items}>
             <SectionTitle>Каталог</SectionTitle>
-            <Categories categoriesData={categories} />
+            <Categories
+                onClick={onCategoryClick}
+                categoriesData={categories}
+                activeCategory={activeCategory}
+            />
         </Section>
     );
 }
