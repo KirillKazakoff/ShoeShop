@@ -69,14 +69,16 @@ export const getTopSalesItems = (): AppThunk => async (dispatch) => {
 };
 
 export const getCategories = (): AppThunk<Promise<boolean>> => async (dispatch) => {
+    dispatch(setCategoriesStatus('loading'));
     const reqObj = { url: 'categories', settings: undefined };
-    const res = await dispatch(request(reqObj, setCatalogStatus));
+    const res = await dispatch(request(reqObj, setCategoriesStatus));
 
     if (!res) return false;
 
     const resData = await res.json();
     dispatch(setCategories(resData));
 
+    dispatch(setCategoriesStatus('loaded'));
     return true;
 };
 

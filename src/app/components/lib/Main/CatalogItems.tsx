@@ -7,10 +7,16 @@ import { selectItems } from '../../../redux/contentSlice';
 import { selectItemsStatus, setCatalogStatus } from '../../../redux/statusSlice';
 import Preloader from '../Preloader';
 
-type CatalogItemsProps = { items: ContentType[] };
+type CatalogItemsProps = { activeCategory: CategoryType };
 
-export default function CatalogItems({ items }: CatalogItemsProps) {
+export default function CatalogItems({ activeCategory }: CatalogItemsProps) {
+    const dispatch = useAppDispatch();
     const status = useAppSelector(selectItemsStatus);
+    const items = useAppSelector(selectItems);
+
+    useEffect(() => {
+        dispatch(getItems(activeCategory.id));
+    }, [activeCategory]);
 
     if (status !== 'loaded') return <Preloader status={status} />;
     return <SectionBody contentArray={items} />;
