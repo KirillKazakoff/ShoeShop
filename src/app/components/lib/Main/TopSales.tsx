@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import SectionBody from '../SectionBody';
-import SectionTitle from '../SectionTitle';
 import { useAppDispatch, useAppSelector } from '../../../data/reduxHooks';
 import { getTopSalesItems } from '../../../logic/thunkApi';
 import { selectTopSales } from '../../../redux/contentSlice';

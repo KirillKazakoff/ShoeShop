@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink, Nav } from 'react-bootstrap';
 import { CategoryType } from '../../../data/initContent';
-import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
-import { getItems, getCategories } from '../../../logic/thunkApi';
-import { setCategory, selectCategories } from '../../../redux/contentSlice';
-import { selectCategoriesStatus, setCatalogStatus } from '../../../redux/statusSlice';
-import Preloader from '../Preloader';
+import { useAppDispatch } from '../../../data/reduxHooks';
+import { setCategory, setOffset } from '../../../redux/contentSlice';
 
 type CategoriesProps = {
     categoriesData: CategoryType[];
@@ -19,6 +16,7 @@ function Category({ category, isActive }: CategoryProps) {
 
     const onClick = () => {
         dispatch(setCategory(category));
+        dispatch(setOffset(0));
     };
     return (
         <Nav.Item>

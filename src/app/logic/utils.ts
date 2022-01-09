@@ -1,9 +1,17 @@
-import { DateTime } from 'luxon';
+export function getItemsUrl(categoryId: number, offset?: number) {
+    const params = [{ categoryId }, { offset }];
 
-export default function getTimeOnZone(zone: string) {
-    const time = DateTime.now().setZone(zone.trim());
-    if (!time.isValid) throw new Error('invalid timeZone format');
-    const { hour, minute, second } = time;
+    const searchParams = new URLSearchParams();
+    params.forEach((param) => {
+        const [[key, value]] = Object.entries(param);
 
-    return { hour, minute, second };
+        if (value || typeof value === 'number') {
+            searchParams.append(key, value.toString());
+        }
+    }, '');
+
+    let url = 'items';
+    if (searchParams) url += `?${searchParams.toString()}`;
+
+    return url;
 }
