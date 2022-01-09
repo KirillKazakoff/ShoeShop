@@ -189,6 +189,10 @@ section {
     min-height: 600px;
 }
 
+.catalog-items {
+    min-height: 1070px;
+}
+
 .catalog-categories {
     font-size: 1.3rem;
     margin-bottom: 2em;

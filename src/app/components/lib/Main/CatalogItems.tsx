@@ -19,6 +19,12 @@ export default function CatalogItems({ activeCategory }: CatalogItemsProps) {
         dispatch(getItems(activeCategory.id, offset));
     }, [activeCategory, offset]);
 
-    if (status !== 'loaded') return <Preloader status={status} />;
+    if (status !== 'loaded') {
+        return (
+            <div className='catalog-items'>
+                <Preloader status={status} />
+            </div>
+        );
+    }
     return <SectionBody contentArray={items} />;
 }

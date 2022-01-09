@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, RowProps } from 'react-bootstrap';
 import { ContentType } from '../../data/initContent';
 import Item from './Item';
 

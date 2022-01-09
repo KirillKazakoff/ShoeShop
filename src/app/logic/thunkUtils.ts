@@ -6,7 +6,7 @@ const baseUrl = 'http://localhost:7070';
 
 function timeoutMock() {
     return new Promise((resolve) => {
-        setTimeout(() => resolve('ok'), 500);
+        setTimeout(() => resolve('ok'), 1000);
     });
 }
 
