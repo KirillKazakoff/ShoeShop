@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Col, Container, Navbar, Row, NavbarBrand, Nav,
+    Col, Navbar, Row, NavbarBrand,
 } from 'react-bootstrap';
 import HeaderBanner from '../lib/Header/HeaderBanner';
 
@@ -9,7 +9,7 @@ import HeaderNav from '../lib/Header/HeaderNav';
 
 export default function HeaderR() {
     return (
-        <Container className='mb-sm-5 mb-md-0'>
+        <section className='mb-sm-5 mb-md-0'>
             <Row>
                 <Col>
                     <Navbar expand='md' bg='light'>
@@ -28,6 +28,6 @@ export default function HeaderR() {
                     <HeaderBanner>К весне готовы!</HeaderBanner>
                 </Col>
             </Row>
-        </Container>
+        </section>
     );
 }

@@ -1,4 +1,5 @@
-import { Card, CardProps } from 'react-bootstrap';
+import { Card, CardProps, Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { ContentType } from '../../data/initContent';
 
@@ -18,13 +19,12 @@ export default function Item({ content }: ItemProps) {
                 <Card.Text className='w-100'>{content.title}</Card.Text>
                 <Card.Text className='w-100'>{content.price}</Card.Text>
             </Card.Body>
-            <Card.Footer className=''>
-                <Card.Link
-                    href='/products/1.html'
-                    className='btn btn-outline-primary align-self-end'
-                >
-                    Заказать
-                </Card.Link>
+            <Card.Footer>
+                <NavLink to='/product'>
+                    <Button variant='outline-secondary' className='align-self-end'>
+                        Заказать
+                    </Button>
+                </NavLink>
             </Card.Footer>
         </Card>
     );

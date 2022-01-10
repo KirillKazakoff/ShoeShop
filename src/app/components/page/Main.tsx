@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import SectionTitle from '../lib/SectionTitle';
 
 import Catalog from '../lib/Main/Catalog';
@@ -8,7 +8,7 @@ import TopSales from '../lib/Main/TopSales';
 
 export default function Main() {
     return (
-        <Container as='main' className='pt-sm-4'>
+        <main>
             <Row className='gy-3'>
                 <Col className='gy-5 col-12'>
                     <section>
@@ -23,6 +23,6 @@ export default function Main() {
                     </section>
                 </Col>
             </Row>
-        </Container>
+        </main>
     );
 }

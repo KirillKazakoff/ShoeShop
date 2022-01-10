@@ -354,3 +354,16 @@ h2, .h2 {
     height: 25vw;
     object-fit: cover;
 }
+
+td {
+    padding: 15px !important;
+}
+
+@media (max-width: 768px) {
+    .banner-header {
+        margin: 0;
+        top: 10px;
+        height: 90px;
+        width: 100%;
+    }
+}

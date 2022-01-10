@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
@@ -10,7 +9,7 @@ import FooterContacts from '../lib/Footer/FooterContacts';
 
 export default function FooterR() {
     return (
-        <Container className="bg-light footer">
+        <footer className='bg-light footer'>
             <Row>
                 <Col>
                     <FooterNav />
@@ -19,10 +18,10 @@ export default function FooterR() {
                     <FooterCards />
                     <FooterCopyright />
                 </Col>
-                <Col className="text-right">
+                <Col className='text-right'>
                     <FooterContacts />
                 </Col>
             </Row>
-        </Container>
+        </footer>
     );
 }
