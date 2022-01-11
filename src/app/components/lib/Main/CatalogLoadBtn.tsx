@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import LoadButton from '../Common/LoadButton';
-import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
-import { selectItems, setOffset } from '../../../redux/contentSlice';
-import { selectItemsStatus } from '../../../redux/statusSlice';
+import { useAppSelector, useAppDispatch } from '../../../redux/reduxHooks';
+import { selectItems, setOffset } from '../../../redux/slices/contentSlice';
+import { selectItemsStatus } from '../../../redux/slices/statusSlice';
 
 export default function CatalogLoadBtn() {
     const items = useAppSelector(selectItems);

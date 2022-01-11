@@ -1,12 +1,11 @@
-import { setCategories, setItems, setTopSalesItems } from '../redux/contentSlice';
+import { setCategories, setItems, setTopSalesItems } from '../redux/slices/contentSlice';
 import {
     setCategoriesStatus,
     setItemsStatus,
     setTopSalesItemsStatus,
-} from '../redux/statusSlice';
+} from '../redux/slices/statusSlice';
 import { AppThunk } from '../redux/store';
-import request from './thunkUtils';
-import { getItemsUrl } from './utils';
+import { request, getItemsUrl } from './thunkUtils';
 
 type GetItemsType = (categoryId: number, offset?: number) => AppThunk<Promise<boolean>>;
 

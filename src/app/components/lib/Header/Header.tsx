@@ -2,10 +2,10 @@ import React from 'react';
 import {
     Col, Navbar, Row, NavbarBrand,
 } from 'react-bootstrap';
-import HeaderBanner from '../lib/Header/HeaderBanner';
+import HeaderBanner from './HeaderBanner';
 
-import HeaderControls from '../lib/Header/HeaderControls';
-import HeaderNav from '../lib/Header/HeaderNav';
+import HeaderControls from './HeaderControls';
+import HeaderNav from './HeaderNav';
 
 export default function Header() {
     return (

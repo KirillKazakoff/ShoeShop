@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { CategoryType } from '../../../data/initContent';
+import { CategoryType } from '../../../redux/dataTypes';
 import SectionBody from '../Common/SectionBody';
-import { useAppDispatch, useAppSelector } from '../../../data/reduxHooks';
-import { getItems } from '../../../logic/thunkApi';
-import { selectItems, selectOffset } from '../../../redux/contentSlice';
-import { selectItemsStatus } from '../../../redux/statusSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
+import { getItems } from '../../../thunk/thunkApi';
+import { selectItems, selectOffset } from '../../../redux/slices/contentSlice';
+import { selectItemsStatus } from '../../../redux/slices/statusSlice';
 import Preloader from '../Common/Preloader';
 
 type CatalogItemsProps = { activeCategory: CategoryType };
@@ -21,7 +21,7 @@ export default function CatalogItems({ activeCategory }: CatalogItemsProps) {
 
     if (status !== 'loaded') {
         return (
-            <div className='catalog-items'>
+            <div className="catalog-items">
                 <Preloader status={status} />
             </div>
         );

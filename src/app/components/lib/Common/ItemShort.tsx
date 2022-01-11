@@ -1,7 +1,7 @@
 import { Card, CardProps, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import { ContentType } from '../../../data/initContent';
+import { ContentType } from '../../../redux/dataTypes';
 
 type ItemShortProps = CardProps & {
     content: ContentType;

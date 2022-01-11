@@ -1,11 +1,9 @@
 import React from 'react';
 
-type FooterCopyrightProps = {};
-
-export default function FooterCopyright({}: FooterCopyrightProps) {
+export default function FooterCopyright() {
     return (
         <section>
-            <div className="footer-copyright">
+            <div className='footer-copyright'>
                 2009-2019 © BosaNoga.ru — модный интернет-магазин обуви и аксессуаров. Все
                 права защищены.
                 <br />

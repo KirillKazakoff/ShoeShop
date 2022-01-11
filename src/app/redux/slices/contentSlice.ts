@@ -2,8 +2,8 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ContentType, CategoryType } from '../data/initContent';
-import type { RootState } from './store';
+import { ContentType, CategoryType } from '../dataTypes';
+import type { RootState } from '../store';
 
 export interface ContentState {
     items: ContentType[];

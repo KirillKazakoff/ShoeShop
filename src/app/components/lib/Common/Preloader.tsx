@@ -1,5 +1,5 @@
 import React from 'react';
-import { Status } from '../../../redux/statusSlice';
+import { Status } from '../../../redux/slices/statusSlice';
 
 type PreloaderProps = { status: Status };
 

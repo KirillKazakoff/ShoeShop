@@ -2,12 +2,12 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-import FooterNav from '../lib/Footer/FooterNav';
-import FooterCards from '../lib/Footer/FooterCards';
-import FooterCopyright from '../lib/Footer/FooterCopyright';
-import FooterContacts from '../lib/Footer/FooterContacts';
+import FooterNav from './FooterNav';
+import FooterCards from './FooterCards';
+import FooterCopyright from './FooterCopyright';
+import FooterContacts from './FooterContacts';
 
-export default function FooterR() {
+export default function Footer() {
     return (
         <footer className='bg-light footer'>
             <Row>

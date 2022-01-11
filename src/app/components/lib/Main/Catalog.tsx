@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
-import { selectCategory, selectCategories } from '../../../redux/contentSlice';
+import { useAppSelector, useAppDispatch } from '../../../redux/reduxHooks';
+import { selectCategory, selectCategories } from '../../../redux/slices/contentSlice';
 
 import Categories from './Categories';
 import CatalogItems from './CatalogItems';
-import { selectCategoriesStatus } from '../../../redux/statusSlice';
+import { selectCategoriesStatus } from '../../../redux/slices/statusSlice';
 import Preloader from '../Common/Preloader';
-import { getCategories } from '../../../logic/thunkApi';
+import { getCategories } from '../../../thunk/thunkApi';
 import CatalogLoadBtn from './CatalogLoadBtn';
 
 export default function Catalog() {

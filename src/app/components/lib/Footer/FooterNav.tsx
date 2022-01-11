@@ -1,4 +1,4 @@
-import { Col, Nav } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import React from 'react';
 import RouteLink from '../Common/RouteLink';
 

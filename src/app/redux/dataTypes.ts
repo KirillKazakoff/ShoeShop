@@ -1,17 +1,17 @@
-export interface ContentType {
+export type ContentType = {
     id: number;
     title: string;
     images: string[];
     price: number;
     category: number;
-}
+};
 
-export interface Size {
+type Size = {
     size: string;
     avalible: boolean;
-}
+};
 
-export interface ContentTypeFull {
+export type ContentTypeFull = {
     id: number;
     category: number;
     title: string;
@@ -26,7 +26,7 @@ export interface ContentTypeFull {
     price: number;
     oldPrice: number;
     sizes: Size[];
-}
+};
 
 export type CategoryType = {
     id: number;

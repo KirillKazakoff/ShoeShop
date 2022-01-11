@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink, Nav } from 'react-bootstrap';
-import { CategoryType } from '../../../data/initContent';
-import { useAppDispatch } from '../../../data/reduxHooks';
-import { setCategory, setOffset } from '../../../redux/contentSlice';
+import { CategoryType } from '../../../redux/dataTypes';
+import { useAppDispatch } from '../../../redux/reduxHooks';
+import { setCategory, setOffset } from '../../../redux/slices/contentSlice';
 
 type CategoriesProps = {
     categoriesData: CategoryType[];

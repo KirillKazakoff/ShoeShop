@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import SectionBody from '../Common/SectionBody';
-import { useAppDispatch, useAppSelector } from '../../../data/reduxHooks';
-import { getTopSalesItems } from '../../../logic/thunkApi';
-import { selectTopSales } from '../../../redux/contentSlice';
-import { selectTopSalesItemsStatus } from '../../../redux/statusSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
+import { getTopSalesItems } from '../../../thunk/thunkApi';
+import { selectTopSales } from '../../../redux/slices/contentSlice';
+import { selectTopSalesItemsStatus } from '../../../redux/slices/statusSlice';
 import Preloader from '../Common/Preloader';
 
 export default function TopSales() {
