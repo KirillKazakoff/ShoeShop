@@ -2,9 +2,13 @@ import React from 'react';
 import {
     Button, ButtonGroup, Col, Row, Stack, Table,
 } from 'react-bootstrap';
-import SectionTitle from '../lib/SectionTitle';
+import { useParams } from 'react-router-dom';
+import SectionTitle from '../lib/Common/SectionTitle';
 
-export default function ProductRoute() {
+export default function ProductFormRoute() {
+    const params = useParams();
+    if (!params.id) return null;
+
     return (
         <section className='catalog-item'>
             <SectionTitle>Босоножки</SectionTitle>

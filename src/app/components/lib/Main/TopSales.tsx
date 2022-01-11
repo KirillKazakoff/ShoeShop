@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import SectionBody from '../SectionBody';
+import SectionBody from '../Common/SectionBody';
 import { useAppDispatch, useAppSelector } from '../../../data/reduxHooks';
 import { getTopSalesItems } from '../../../logic/thunkApi';
 import { selectTopSales } from '../../../redux/contentSlice';
 import { selectTopSalesItemsStatus } from '../../../redux/statusSlice';
-import Preloader from '../Preloader';
+import Preloader from '../Common/Preloader';
 
 export default function TopSales() {
     const dispatch = useAppDispatch();

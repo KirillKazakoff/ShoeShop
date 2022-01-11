@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { CategoryType } from '../../../data/initContent';
-import SectionBody from '../SectionBody';
+import SectionBody from '../Common/SectionBody';
 import { useAppDispatch, useAppSelector } from '../../../data/reduxHooks';
 import { getItems } from '../../../logic/thunkApi';
 import { selectItems, selectOffset } from '../../../redux/contentSlice';
 import { selectItemsStatus } from '../../../redux/statusSlice';
-import Preloader from '../Preloader';
+import Preloader from '../Common/Preloader';
 
 type CatalogItemsProps = { activeCategory: CategoryType };
 

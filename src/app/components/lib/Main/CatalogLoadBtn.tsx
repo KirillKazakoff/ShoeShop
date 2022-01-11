@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import LoadButton from '../LoadButton';
+import LoadButton from '../Common/LoadButton';
 import { useAppSelector, useAppDispatch } from '../../../data/reduxHooks';
 import { selectItems, setOffset } from '../../../redux/contentSlice';
 import { selectItemsStatus } from '../../../redux/statusSlice';

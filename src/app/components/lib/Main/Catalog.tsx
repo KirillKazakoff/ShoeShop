@@ -5,7 +5,7 @@ import { selectCategory, selectCategories } from '../../../redux/contentSlice';
 import Categories from './Categories';
 import CatalogItems from './CatalogItems';
 import { selectCategoriesStatus } from '../../../redux/statusSlice';
-import Preloader from '../Preloader';
+import Preloader from '../Common/Preloader';
 import { getCategories } from '../../../logic/thunkApi';
 import CatalogLoadBtn from './CatalogLoadBtn';
 

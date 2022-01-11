@@ -7,7 +7,7 @@ import HeaderBanner from '../lib/Header/HeaderBanner';
 import HeaderControls from '../lib/Header/HeaderControls';
 import HeaderNav from '../lib/Header/HeaderNav';
 
-export default function HeaderR() {
+export default function Header() {
     return (
         <section className='mb-sm-5 mb-md-0'>
             <Row>
