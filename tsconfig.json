@@ -3,6 +3,7 @@
         "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
         "moduleResolution": "node",
+        "baseUrl": "./",
         "sourceMap": true,
         "module": "esnext",
         "target": "es5",
@@ -24,6 +25,6 @@
         "transpileOnly": false
     },
     "exclude": [
-        "./node_modules/"
-    ],
+        "node_modules"
+    ]
 }
