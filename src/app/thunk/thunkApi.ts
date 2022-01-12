@@ -1,7 +1,9 @@
+import { setCurrentProduct } from '../redux/slices/cartSlice';
 import { setCategories, setItems, setTopSalesItems } from '../redux/slices/contentSlice';
 import {
     setCategoriesStatus,
     setItemsStatus,
+    setProductFormStatus,
     setTopSalesItemsStatus,
 } from '../redux/slices/statusSlice';
 import { AppThunk } from '../redux/store';
@@ -51,5 +53,20 @@ export const getCategories = (): AppThunk<Promise<boolean>> => async (dispatch) 
     dispatch(setCategories(resData));
 
     dispatch(setCategoriesStatus('loaded'));
+    return true;
+};
+
+export const getItem = (id: string): AppThunk => async (dispatch) => {
+    dispatch(setProductFormStatus('loading'));
+
+    const reqObj = { url: `items/${id}`, settings: undefined };
+    const res = await dispatch(request(reqObj, setProductFormStatus));
+
+    if (!res) return false;
+
+    const resData = await res.json();
+    dispatch(setCurrentProduct(resData));
+
+    dispatch(setProductFormStatus('loaded'));
     return true;
 };

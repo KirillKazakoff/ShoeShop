@@ -6,7 +6,7 @@ export type ContentType = {
     category: number;
 };
 
-type Size = {
+export type Size = {
     size: string;
     avalible: boolean;
 };

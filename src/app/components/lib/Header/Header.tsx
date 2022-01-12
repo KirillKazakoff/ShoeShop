@@ -14,7 +14,10 @@ export default function Header() {
                 <Col>
                     <Navbar expand='md' bg='light'>
                         <NavbarBrand href='/'>
-                            <img src='./img/header-logo.png' alt='Bosa Noga' />
+                            <img
+                                src='http://localhost:9000/img/header-logo.png'
+                                alt='Bosa Noga'
+                            />
                         </NavbarBrand>
                         <Navbar.Collapse id='basic-navbar-nav'>
                             <HeaderNav />

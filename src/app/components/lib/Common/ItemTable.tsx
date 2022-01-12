@@ -1,33 +1,36 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, TableProps } from 'react-bootstrap';
+import { ContentTypeFull } from '../../../redux/dataTypes';
 
-export default function ItemTable() {
+type ItemTableProps = { content: ContentTypeFull } & TableProps;
+
+export default function ItemTable({ content, ...props }: ItemTableProps) {
     return (
-        <Table bordered>
+        <Table bordered {...props}>
             <tbody>
                 <tr>
                     <td>Артикул</td>
-                    <td>1000046</td>
+                    <td>{content.sku}</td>
                 </tr>
                 <tr>
                     <td>Производитель</td>
-                    <td>PAUL ANDREW</td>
+                    <td>{content.manufacturer}</td>
                 </tr>
                 <tr>
                     <td>Цвет</td>
-                    <td>Чёрный</td>
+                    <td>{content.color}</td>
                 </tr>
                 <tr>
                     <td>Материалы</td>
-                    <td>Кожа</td>
+                    <td>{content.material}</td>
                 </tr>
                 <tr>
                     <td>Сезон</td>
-                    <td>Лето</td>
+                    <td>{content.season}</td>
                 </tr>
                 <tr>
                     <td>Повод</td>
-                    <td>Прогулка</td>
+                    <td>{content.reason}</td>
                 </tr>
             </tbody>
         </Table>

@@ -10,7 +10,7 @@ import MainRoute from './components/routes/MainRoute';
 import AboutRoute from './components/routes/AboutRoute';
 import ContactsRoute from './components/routes/ContactsRoute';
 import CatalogRoute from './components/routes/CatalogRoute';
-import ProductFormRoute from './components/routes/ProductFormRoute';
+import ProductRoute from './components/routes/ProductRoute';
 
 export default function App() {
     return (
@@ -19,7 +19,7 @@ export default function App() {
                 <Route path='/' element={<PageRoute />}>
                     <Route path='/' element={<MainRoute />} />
                     <Route path='/catalog' element={<CatalogRoute />} />
-                    <Route path='/product/:id' element={<ProductFormRoute />} />
+                    <Route path='/product/:id' element={<ProductRoute />} />
                     <Route path='/about' element={<AboutRoute />} />
                     <Route path='/contacts' element={<ContactsRoute />} />
                 </Route>

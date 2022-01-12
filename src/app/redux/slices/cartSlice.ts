@@ -1,27 +1,45 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ContentType, ContentTypeFull, CategoryType } from '../dataTypes';
+import { ContentTypeFull } from '../dataTypes';
 import type { RootState } from '../store';
 
 export type CartState = {
-    product: ContentTypeFull | null;
+    currentProduct: ContentTypeFull | null;
+    amount: number;
+    activeSizeIndex: number | null;
 };
 
 const initialState: CartState = {
-    product: null,
+    currentProduct: null,
+    amount: 1,
+    activeSizeIndex: null,
 };
 
 export const cartSlice = createSlice({
     name: 'slice',
     initialState,
     reducers: {
-        setProduct: (state, action: PayloadAction<ContentTypeFull>) => {
-            state.product = action.payload;
+        setCurrentProduct: (state, action: PayloadAction<ContentTypeFull>) => {
+            state.currentProduct = action.payload;
+        },
+        increase: (state) => {
+            state.amount += 1;
+        },
+        decrease: (state) => {
+            state.amount -= 1;
+        },
+        setActiveSizeIndex: (state, action: PayloadAction<number>) => {
+            state.activeSizeIndex = action.payload;
         },
     },
 });
 
-export const { setProduct } = cartSlice.actions;
-export const selectProduct = (state: RootState) => state.cart.product;
+export const {
+    setCurrentProduct, increase, decrease, setActiveSizeIndex,
+} = cartSlice.actions;
+
+export const selectCurrentProduct = (state: RootState) => state.cart.currentProduct;
+export const selectAmount = (state: RootState) => state.cart.amount;
+export const selectActiveSizeIndex = (state: RootState) => state.cart.activeSizeIndex;
 
 export default cartSlice.reducer;

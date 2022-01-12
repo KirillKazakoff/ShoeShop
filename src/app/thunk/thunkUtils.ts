@@ -1,12 +1,12 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { Status } from '../redux/statusSlice';
+import { Status } from '../redux/slices/statusSlice';
 import { AppThunk } from '../redux/store';
 
 const baseUrl = 'http://localhost:7070';
 
 function timeoutMock() {
     return new Promise((resolve) => {
-        setTimeout(() => resolve('ok'), 1000);
+        setTimeout(() => resolve('ok'), 300);
     });
 }
 
