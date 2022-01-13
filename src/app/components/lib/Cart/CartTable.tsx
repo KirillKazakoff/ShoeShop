@@ -9,7 +9,7 @@ export default function CartTable({ content }: CartTableProps) {
     let total = 0;
     const orders = content.map((order) => {
         total += order.price * order.amount;
-        return <CartOrder order={order} />;
+        return <CartOrder key={order.id} order={order} />;
     });
     return (
         <Table bordered>

@@ -6,13 +6,13 @@ import type { RootState } from '../store';
 type ProductFormState = {
     currentProduct: ContentTypeFull | null;
     amount: number;
-    activeSizeIndex: number | null;
+    activeSize: string;
 };
 
 const initialState: ProductFormState = {
     currentProduct: null,
     amount: 1,
-    activeSizeIndex: null,
+    activeSize: '',
 };
 
 export const productFormSlice = createSlice({
@@ -28,18 +28,18 @@ export const productFormSlice = createSlice({
         decrease: (state) => {
             state.amount -= 1;
         },
-        setActiveSizeIndex: (state, action: PayloadAction<number>) => {
-            state.activeSizeIndex = action.payload;
+        setActiveSize: (state, action: PayloadAction<string>) => {
+            state.activeSize = action.payload;
         },
     },
 });
 
 export const {
-    setCurrentProduct, increase, decrease, setActiveSizeIndex,
+    setCurrentProduct, increase, decrease, setActiveSize,
 } = productFormSlice.actions;
 
 export const selectCurrentProduct = (state: RootState) => state.productForm.currentProduct;
 export const selectAmount = (state: RootState) => state.productForm.amount;
-export const selectActiveSizeIndex = (state: RootState) => state.productForm.activeSizeIndex;
+export const selectActiveSize = (state: RootState) => state.productForm.activeSize;
 
 export default productFormSlice.reducer;

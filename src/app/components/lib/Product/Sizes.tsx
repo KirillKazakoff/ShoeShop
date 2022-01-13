@@ -4,13 +4,15 @@ import React from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
 import { Size as SizeType } from '../../../redux/dataTypes';
 import { useAppDispatch } from '../../../redux/reduxHooks';
-import { setActiveSizeIndex } from '../../../redux/slices/productFormSlice';
+import { setActiveSize } from '../../../redux/slices/productFormSlice';
 
-type SizesProps = { data: SizeType[]; activeIndex: number | null };
+type SizesProps = { data: SizeType[]; activeSize: string };
 
-export default function Sizes({ data, activeIndex }: SizesProps) {
+export default function Sizes({ data, activeSize }: SizesProps) {
     const dispatch = useAppDispatch();
-    const onClick = (e: React.SyntheticEvent) => dispatch(setActiveSizeIndex(+e.currentTarget.id));
+    const onClick = (e: React.SyntheticEvent) => {
+        dispatch(setActiveSize(e.currentTarget.textContent as string));
+    };
 
     const sizes = data.map(({ size, avalible }, index) => {
         if (!avalible) return null;
@@ -20,7 +22,7 @@ export default function Sizes({ data, activeIndex }: SizesProps) {
                 id={index.toString()}
                 variant='outline-secondary'
                 onClick={onClick}
-                active={activeIndex === index}
+                active={size === activeSize}
             >
                 {size}
             </Button>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
-import { decrease, increase, selectAmount } from '../../../redux/slices/productFormSlice';
-import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
+import { decrease, increase } from '../../../redux/slices/productFormSlice';
+import { useAppDispatch } from '../../../redux/reduxHooks';
 
-export default function Amount() {
+type AmountProps = { amount: number };
+
+export default function Amount({ amount }: AmountProps) {
     const dispatch = useAppDispatch();
-    const amount = useAppSelector(selectAmount);
     const onDecrease = () => dispatch(decrease());
     const onIncrease = () => dispatch(increase());
 

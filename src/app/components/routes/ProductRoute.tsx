@@ -25,18 +25,21 @@ export default function ProductRoute() {
     }, []);
 
     if (!currentProduct) return null;
-    const { title, images, sizes } = currentProduct;
+    const { title, images } = currentProduct;
 
     return (
-        <section className="catalog-item">
+        <section className='catalog-item'>
             <SectionTitle>{title}</SectionTitle>
             <Row>
-                <Col className="col-5">
-                    <img src={images[0]} className="img-fluid" alt={title} />
+                <Col className='col-5'>
+                    <img
+                        src={images[0]} className='img-fluid'
+                        alt={title}
+                    />
                 </Col>
-                <Col className="col-7">
+                <Col className='col-7'>
                     <ItemTable content={currentProduct} />
-                    <ProductForm sizes={sizes} />
+                    <ProductForm product={currentProduct} />
                 </Col>
             </Row>
         </section>

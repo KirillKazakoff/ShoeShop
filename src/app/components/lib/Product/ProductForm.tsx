@@ -1,28 +1,46 @@
 import React from 'react';
 import { Stack } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { Size } from '../../../redux/dataTypes';
+import { ContentTypeFull, ContentTypeCart } from '../../../redux/dataTypes';
 import Amount from './Amount';
 import Sizes from './Sizes';
-import { useAppSelector } from '../../../redux/reduxHooks';
-import { selectActiveSizeIndex } from '../../../redux/slices/productFormSlice';
+import { useAppSelector, useAppDispatch } from '../../../redux/reduxHooks';
+import { selectActiveSize, selectAmount } from '../../../redux/slices/productFormSlice';
 import BigRedBtn from '../Common/BigRedBtn';
+import { addOrder } from '../../../redux/slices/cartSlice';
 
-type ProductFormProps = { sizes: Size[] };
-export default function ProductForm({ sizes }: ProductFormProps) {
-    const dispatch;
-    const activeSizeIndex = useAppSelector(selectActiveSizeIndex);
-    const isActive = typeof activeSizeIndex !== 'number';
+type ProductFormProps = { product: ContentTypeFull };
+export default function ProductForm({ product }: ProductFormProps) {
+    const activeSize = useAppSelector(selectActiveSize);
+    const amount = useAppSelector(selectAmount);
+    const isDisabled = !activeSize;
+
+    const dispatch = useAppDispatch();
+    const onClick = (e: React.SyntheticEvent) => {
+        if (isDisabled) {
+            e.preventDefault();
+            return;
+        }
+
+        const order: ContentTypeCart = {
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            size: activeSize,
+            amount,
+        };
+        dispatch(addOrder(order));
+    };
 
     return (
         <>
             <Stack gap={2} className='align-items-center'>
-                <Sizes data={sizes} activeIndex={activeSizeIndex} />
-                <Amount />
+                <Sizes data={product.sizes} activeSize={activeSize} />
+                <Amount amount={amount} />
             </Stack>
 
-            <NavLink to='/cart'>
-                <BigRedBtn disabled={isActive}>В корзину</BigRedBtn>
+            <NavLink to='/cart' onClick={onClick}>
+                <BigRedBtn disabled={isDisabled}>В корзину</BigRedBtn>
             </NavLink>
         </>
     );
