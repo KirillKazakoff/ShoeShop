@@ -1,11 +1,3 @@
-export type ContentType = {
-    id: number;
-    title: string;
-    images: string[];
-    price: number;
-    category: number;
-};
-
 export type Size = {
     size: string;
     avalible: boolean;
@@ -26,6 +18,22 @@ export type ContentTypeFull = {
     price: number;
     oldPrice: number;
     sizes: Size[];
+};
+
+export type ContentTypeCart = {
+    id: number;
+    title: string;
+    size: string;
+    amount: number;
+    price: number;
+};
+
+export type ContentType = {
+    id: number;
+    title: string;
+    images: string[];
+    price: number;
+    category: number;
 };
 
 export type CategoryType = {

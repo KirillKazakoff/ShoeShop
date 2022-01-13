@@ -11,6 +11,7 @@ import AboutRoute from './components/routes/AboutRoute';
 import ContactsRoute from './components/routes/ContactsRoute';
 import CatalogRoute from './components/routes/CatalogRoute';
 import ProductRoute from './components/routes/ProductRoute';
+import CartRoute from './components/routes/CartRoute';
 
 export default function App() {
     return (
@@ -22,6 +23,7 @@ export default function App() {
                     <Route path='/product/:id' element={<ProductRoute />} />
                     <Route path='/about' element={<AboutRoute />} />
                     <Route path='/contacts' element={<ContactsRoute />} />
+                    <Route path='/cart' element={<CartRoute />} />
                 </Route>
             </Routes>
         </Router>

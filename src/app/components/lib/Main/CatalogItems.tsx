@@ -21,7 +21,7 @@ export default function CatalogItems({ activeCategory }: CatalogItemsProps) {
 
     if (status !== 'loaded') {
         return (
-            <div className="catalog-items">
+            <div className='catalog-items'>
                 <Preloader status={status} />
             </div>
         );
