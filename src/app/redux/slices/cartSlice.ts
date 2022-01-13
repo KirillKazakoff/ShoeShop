@@ -27,10 +27,16 @@ export const cartSlice = createSlice({
                 state.orders[index].amount += amount;
             }
         },
+        deleteOrder: (state, action: PayloadAction<number>) => {
+            const index = state.orders.findIndex((order) => order.id === action.payload);
+            if (index === -1) return;
+
+            state.orders.splice(index, 1);
+        },
     },
 });
 
-export const { addOrder } = cartSlice.actions;
+export const { addOrder, deleteOrder } = cartSlice.actions;
 export const selectOrders = (state: RootState) => state.cart.orders;
 
 export default cartSlice.reducer;

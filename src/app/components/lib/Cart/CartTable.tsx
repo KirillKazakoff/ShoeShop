@@ -7,10 +7,17 @@ type CartTableProps = { content: ContentTypeCart[] };
 
 export default function CartTable({ content }: CartTableProps) {
     let total = 0;
-    const orders = content.map((order) => {
+
+    const orders = content.map((order, index) => {
         total += order.price * order.amount;
-        return <CartOrder key={order.id} order={order} />;
+        return (
+            <CartOrder
+                key={order.id} order={order}
+                index={index}
+            />
+        );
     });
+
     return (
         <Table bordered>
             <thead>
