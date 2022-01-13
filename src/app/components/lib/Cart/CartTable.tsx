@@ -28,9 +28,9 @@ export default function CartTable({ content }: CartTableProps) {
                 {orders}
                 <tr>
                     <td colSpan={5} className='text-right'>
-                        {`${total} руб.`}
+                        Общая стоимость
                     </td>
-                    <td>34 000 руб.</td>
+                    <td>{`${total} руб.`}</td>
                 </tr>
             </tbody>
         </Table>

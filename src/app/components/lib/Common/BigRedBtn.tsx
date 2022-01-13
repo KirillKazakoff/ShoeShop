@@ -3,7 +3,7 @@ import { Button, ButtonProps } from 'react-bootstrap';
 
 type AddButtonProps = ButtonProps;
 
-export default function AddButton({ children, ...props }: AddButtonProps) {
+export default function ToCartBtn({ children, ...props }: AddButtonProps) {
     return (
         <Button
             variant='danger' size='lg'

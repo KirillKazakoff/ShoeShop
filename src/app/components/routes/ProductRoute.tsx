@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../redux/reduxHooks';
 import SectionTitle from '../lib/Common/SectionTitle';
-import { selectCurrentProduct } from '../../redux/slices/cartSlice';
+import { selectCurrentProduct } from '../../redux/slices/productFormSlice';
 import { getItem } from '../../thunk/thunkApi';
 import { setProductFormStatus } from '../../redux/slices/statusSlice';
 import ItemTable from '../lib/Common/ItemTable';
@@ -28,16 +28,13 @@ export default function ProductRoute() {
     const { title, images, sizes } = currentProduct;
 
     return (
-        <section className='catalog-item'>
+        <section className="catalog-item">
             <SectionTitle>{title}</SectionTitle>
             <Row>
-                <Col className='col-5'>
-                    <img
-                        src={images[0]} className='img-fluid'
-                        alt={title}
-                    />
+                <Col className="col-5">
+                    <img src={images[0]} className="img-fluid" alt={title} />
                 </Col>
-                <Col className='col-7'>
+                <Col className="col-7">
                     <ItemTable content={currentProduct} />
                     <ProductForm sizes={sizes} />
                 </Col>

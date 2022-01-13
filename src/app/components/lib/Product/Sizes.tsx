@@ -4,13 +4,12 @@ import React from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
 import { Size as SizeType } from '../../../redux/dataTypes';
 import { useAppDispatch } from '../../../redux/reduxHooks';
-import { setActiveSizeIndex } from '../../../redux/slices/cartSlice';
+import { setActiveSizeIndex } from '../../../redux/slices/productFormSlice';
 
 type SizesProps = { data: SizeType[]; activeIndex: number | null };
 
 export default function Sizes({ data, activeIndex }: SizesProps) {
     const dispatch = useAppDispatch();
-
     const onClick = (e: React.SyntheticEvent) => dispatch(setActiveSizeIndex(+e.currentTarget.id));
 
     const sizes = data.map(({ size, avalible }, index) => {

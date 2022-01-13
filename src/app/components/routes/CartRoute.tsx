@@ -3,13 +3,16 @@
 import React from 'react';
 import CartTable from '../lib/Cart/CartTable';
 import CartForm from '../lib/Cart/CartForm';
+import { useAppSelector } from '../../redux/reduxHooks';
+import { selectOrders } from '../../redux/slices/cartSlice';
 
 export default function CartRoute() {
+    const orders = useAppSelector(selectOrders);
     return (
         <div>
             <section className='cart'>
                 <h2 className='text-center'>Корзина</h2>
-                {/* <CartTable /> */}
+                <CartTable content={orders} />
             </section>
             <section className='order'>
                 <h2 className='text-center'>Оформить заказ</h2>

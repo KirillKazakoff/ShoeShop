@@ -1,4 +1,4 @@
-import { setCurrentProduct } from '../redux/slices/cartSlice';
+import { setCurrentProduct } from '../redux/slices/productFormSlice';
 import { setCategories, setItems, setTopSalesItems } from '../redux/slices/contentSlice';
 import {
     setCategoriesStatus,

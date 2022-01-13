@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
-import { decrease, increase, selectAmount } from '../../../redux/slices/cartSlice';
+import { decrease, increase, selectAmount } from '../../../redux/slices/productFormSlice';
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
 
 export default function Amount() {

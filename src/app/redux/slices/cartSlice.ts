@@ -1,45 +1,27 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ContentTypeFull } from '../dataTypes';
+import { ContentTypeCart } from '../dataTypes';
 import type { RootState } from '../store';
 
-export type CartState = {
-    currentProduct: ContentTypeFull | null;
-    amount: number;
-    activeSizeIndex: number | null;
+type CartState = {
+    orders: ContentTypeCart[];
 };
 
 const initialState: CartState = {
-    currentProduct: null,
-    amount: 1,
-    activeSizeIndex: null,
+    orders: [],
 };
 
 export const cartSlice = createSlice({
-    name: 'slice',
+    name: 'cart',
     initialState,
     reducers: {
-        setCurrentProduct: (state, action: PayloadAction<ContentTypeFull>) => {
-            state.currentProduct = action.payload;
-        },
-        increase: (state) => {
-            state.amount += 1;
-        },
-        decrease: (state) => {
-            state.amount -= 1;
-        },
-        setActiveSizeIndex: (state, action: PayloadAction<number>) => {
-            state.activeSizeIndex = action.payload;
+        addOrder: (state, action: PayloadAction<ContentTypeCart>) => {
+            state.orders.push(action.payload);
         },
     },
 });
 
-export const {
-    setCurrentProduct, increase, decrease, setActiveSizeIndex,
-} = cartSlice.actions;
-
-export const selectCurrentProduct = (state: RootState) => state.cart.currentProduct;
-export const selectAmount = (state: RootState) => state.cart.amount;
-export const selectActiveSizeIndex = (state: RootState) => state.cart.activeSizeIndex;
+export const { addOrder } = cartSlice.actions;
+export const selectOrders = (state: RootState) => state.cart.orders;
 
 export default cartSlice.reducer;

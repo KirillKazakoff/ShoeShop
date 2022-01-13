@@ -2,14 +2,15 @@ import React from 'react';
 import { Stack } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { Size } from '../../../redux/dataTypes';
-import AddButton from './AddButton';
 import Amount from './Amount';
 import Sizes from './Sizes';
 import { useAppSelector } from '../../../redux/reduxHooks';
-import { selectActiveSizeIndex } from '../../../redux/slices/cartSlice';
+import { selectActiveSizeIndex } from '../../../redux/slices/productFormSlice';
+import BigRedBtn from '../Common/BigRedBtn';
 
 type ProductFormProps = { sizes: Size[] };
 export default function ProductForm({ sizes }: ProductFormProps) {
+    const dispatch;
     const activeSizeIndex = useAppSelector(selectActiveSizeIndex);
     const isActive = typeof activeSizeIndex !== 'number';
 
@@ -21,7 +22,7 @@ export default function ProductForm({ sizes }: ProductFormProps) {
             </Stack>
 
             <NavLink to='/cart'>
-                <AddButton disabled={isActive}>В корзину</AddButton>
+                <BigRedBtn disabled={isActive}>В корзину</BigRedBtn>
             </NavLink>
         </>
     );
