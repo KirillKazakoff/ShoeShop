@@ -10,7 +10,7 @@ export default function CartOrder({ order }: CartOrderProps) {
         <tr>
             <td>{order.id}</td>
             <td>
-                <NavLink to={`products/${order.id}`}>Босоножки</NavLink>
+                <NavLink to={`/product/${order.id}`}>{order.title}</NavLink>
             </td>
             <td>{order.size}</td>
             <td>{order.amount}</td>
