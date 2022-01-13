@@ -11,11 +11,11 @@ export default function CartRoute() {
     return (
         <div>
             <section className='cart'>
-                <h2 className='text-center'>Корзина</h2>
+                <h2 className='text-center h2'>Корзина</h2>
                 <CartTable content={orders} />
             </section>
             <section className='order'>
-                <h2 className='text-center'>Оформить заказ</h2>
+                <h2 className='text-center h2'>Оформить заказ</h2>
                 <CartForm />
             </section>
         </div>

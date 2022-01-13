@@ -1,39 +1,27 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { Form, Button, Row } from 'react-bootstrap';
 
 export default function CartForm() {
     return (
-        <div className='card' style={{ maxWidth: '30rem', margin: '0 auto' }}>
-            <form className='card-body'>
-                <div className='form-group'>
-                    <label htmlFor='phone'>Телефон</label>
-                    <input
-                        className='form-control'
-                        id='phone'
-                        placeholder='Ваш телефон'
-                    />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='address'>Адрес доставки</label>
-                    <input
-                        className='form-control'
-                        id='address'
-                        placeholder='Адрес доставки'
-                    />
-                </div>
-                <div className='form-group form-check'>
-                    <input
-                        type='checkbox' className='form-check-input'
-                        id='agreement'
-                    />
-                    <label className='form-check-label' htmlFor='agreement'>
-                        Согласен с правилами доставки
-                    </label>
-                </div>
-                <button type='submit' className='btn btn-outline-secondary'>
-                    Оформить
-                </button>
-            </form>
-        </div>
+        <Form className='border rounded p-4 w-50 m-auto'>
+            <Row className='gy-3 mb-3'>
+                <Form.Group controlId='phone'>
+                    <Form.Label>Телефон</Form.Label>
+                    <Form.Control placeholder='Ваш телефон' />
+                </Form.Group>
+
+                <Form.Group controlId='address'>
+                    <Form.Label>Адрес доставки</Form.Label>
+                    <Form.Control placeholder='Адрес' />
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Check type='checkbox' label='Согласен с правилами доставки' />
+                </Form.Group>
+            </Row>
+
+            <Button variant='outline-secondary'>Оформить</Button>
+        </Form>
     );
 }
