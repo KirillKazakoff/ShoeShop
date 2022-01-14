@@ -9,6 +9,7 @@ export type StatusState = {
     topSalesItemsStatus: Status;
     itemsStatus: Status;
     categoriesStatus: Status;
+    totalOrderStatus: Status;
 };
 
 const initialState: StatusState = {
@@ -16,6 +17,7 @@ const initialState: StatusState = {
     topSalesItemsStatus: 'idle',
     itemsStatus: 'idle',
     categoriesStatus: 'idle',
+    totalOrderStatus: 'idle',
 };
 
 export const statusSlice = createSlice({
@@ -34,6 +36,9 @@ export const statusSlice = createSlice({
         setTopSalesItemsStatus: (state, action: PayloadAction<Status>) => {
             state.topSalesItemsStatus = action.payload;
         },
+        setTotalOrderStatus: (state, action: PayloadAction<Status>) => {
+            state.totalOrderStatus = action.payload;
+        },
     },
 });
 
@@ -42,11 +47,13 @@ export const {
     setTopSalesItemsStatus,
     setItemsStatus,
     setCategoriesStatus,
+    setTotalOrderStatus,
 } = statusSlice.actions;
 
 export const selectFormStatus = (state: RootState) => state.statuses.productFormStatus;
 export const selectItemsStatus = (state: RootState) => state.statuses.itemsStatus;
 export const selectCategoriesStatus = (state: RootState) => state.statuses.categoriesStatus;
 export const selectTopSalesItemsStatus = (state: RootState) => state.statuses.topSalesItemsStatus;
+export const selectTotalOrderStatus = (state: RootState) => state.statuses.totalOrderStatus;
 
 export default statusSlice.reducer;

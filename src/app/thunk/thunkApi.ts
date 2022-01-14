@@ -5,9 +5,11 @@ import {
     setItemsStatus,
     setProductFormStatus,
     setTopSalesItemsStatus,
+    setTotalOrderStatus,
 } from '../redux/slices/statusSlice';
 import { AppThunk } from '../redux/store';
-import { request, getItemsUrl } from './thunkUtils';
+import { request, getItemsUrl, RequestObj } from './thunkUtils';
+import { TotalOrder } from '../redux/dataTypes';
 
 type GetItemsType = (categoryId: number, offset?: number) => AppThunk<Promise<boolean>>;
 
@@ -68,5 +70,26 @@ export const getItem = (id: string): AppThunk => async (dispatch) => {
     dispatch(setCurrentProduct(resData));
 
     dispatch(setProductFormStatus('loaded'));
+    return true;
+};
+
+export const postTotalOrder = (total: TotalOrder): AppThunk => async (dispatch) => {
+    dispatch(setTotalOrderStatus('loading'));
+
+    const reqObj: RequestObj = {
+        url: 'order',
+        settings: {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(total),
+        },
+    };
+    const res = await dispatch(request(reqObj, setTotalOrderStatus));
+
+    if (!res) return false;
+    dispatch(setTotalOrderStatus('loaded'));
     return true;
 };

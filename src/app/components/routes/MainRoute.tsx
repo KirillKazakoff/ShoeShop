@@ -9,15 +9,15 @@ import TopSales from '../lib/Main/TopSales';
 export default function MainRoute() {
     return (
         <main>
-            <Row className="gy-3">
-                <Col className="gy-5 col-12">
+            <Row className='gy-3'>
+                <Col className='gy-5 col-12'>
                     <section>
                         <SectionTitle>Хиты продаж</SectionTitle>
                         <TopSales />
                     </section>
                 </Col>
-                <Col className="col-12">
-                    <section className="catalog mb-5">
+                <Col className='col-12'>
+                    <section className='catalog mb-5'>
                         <SectionTitle>Каталог</SectionTitle>
                         <Catalog />
                     </section>

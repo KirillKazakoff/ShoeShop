@@ -4,6 +4,7 @@ import productFormReducer from './slices/productFormSlice';
 import contentReducer from './slices/contentSlice';
 import cartReducer from './slices/cartSlice';
 import statusReducer from './slices/statusSlice';
+import checkoutReducer from './slices/checkoutSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         statuses: statusReducer,
         productForm: productFormReducer,
         cart: cartReducer,
+        checkout: checkoutReducer,
     },
 });
 

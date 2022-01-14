@@ -1,3 +1,4 @@
+// ContentTypes
 export type Size = {
     size: string;
     avalible: boolean;
@@ -36,7 +37,31 @@ export type ContentType = {
     category: number;
 };
 
+// Category
 export type CategoryType = {
     id: number;
     title: string;
 };
+
+// InputState
+export type InputState = {
+    name: string;
+    value: string;
+};
+
+// totalOrder
+export interface Item {
+    id: number;
+    price: number;
+    count: number;
+}
+
+export interface Owner {
+    phone: string;
+    address: string;
+}
+
+export interface TotalOrder {
+    owner: Owner;
+    items: Item[];
+}

@@ -10,11 +10,13 @@ function timeoutMock() {
     });
 }
 
+export type RequestObj = {
+    url: string;
+    settings: RequestInit | undefined;
+};
+
 type RequestType = (
-    reqObj: {
-        url: string;
-        settings: RequestInit | undefined;
-    },
+    reqObj: RequestObj,
     setStatus: ActionCreatorWithPayload<Status, string>
 ) => AppThunk<Promise<false | Response>>;
 

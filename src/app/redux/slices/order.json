@@ -1,0 +1,13 @@
+{
+    "owner": {
+        "phone": "+7xxxxxxxxxxx",
+        "address": "Moscow City"
+    },
+    "items": [
+        {
+            "id": 1,
+            "price": 34000,
+            "count": 1
+        }
+    ]
+}
