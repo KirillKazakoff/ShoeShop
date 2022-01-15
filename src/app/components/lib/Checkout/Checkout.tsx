@@ -18,18 +18,13 @@ export default function Checkout() {
     const inputs = useAppSelector(selectCheckout);
     const { address, phone, agreement } = inputs;
 
-    const owner = { phone, address };
-    const items = useAppSelector(selectOrders).map((item) => ({
-        id: item.id,
-        price: item.price,
-        count: item.amount,
-    }));
-    const total: TotalOrder = { owner, items };
-
     const onChange = useChange();
+
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        dispatch(postTotalOrder(total));
+
+        const owner = { phone, address };
+        dispatch(postTotalOrder(owner));
     };
 
     return (
