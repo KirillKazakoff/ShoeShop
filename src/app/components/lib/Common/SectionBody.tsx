@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import ItemShort from './ItemShort';
-import { ContentType } from '../../../data/initContent';
+import { ContentType } from '../../../redux/dataTypes';
 
 export type SectionBodyProps = { contentArray: ContentType[] };
 
