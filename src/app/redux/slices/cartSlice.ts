@@ -38,5 +38,10 @@ export const cartSlice = createSlice({
 
 export const { addOrder, deleteOrder } = cartSlice.actions;
 export const selectOrders = (state: RootState) => state.cart.orders;
+export const selectOrdersOnServer = (state: RootState) => state.cart.orders.map((item) => ({
+    id: item.id,
+    price: item.price,
+    count: item.amount,
+}));
 
 export default cartSlice.reducer;

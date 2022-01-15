@@ -10,6 +10,8 @@ import {
 import { AppThunk } from '../redux/store';
 import { request, getItemsUrl, RequestObj } from './thunkUtils';
 import { TotalOrder, Owner } from '../redux/dataTypes';
+import { selectOrders, selectOrdersOnServer } from '../redux/slices/cartSlice';
+import { selectOwner } from '../redux/slices/checkoutSlice';
 
 type GetItemsType = (categoryId: number, offset?: number) => AppThunk<Promise<boolean>>;
 
@@ -73,14 +75,12 @@ export const getItem = (id: string): AppThunk => async (dispatch) => {
     return true;
 };
 
-export const postTotalOrder = (owner: Owner): AppThunk => async (dispatch, getState) => {
+export const postTotalOrder = (): AppThunk => async (dispatch, getState) => {
     dispatch(setTotalOrderStatus('loading'));
 
-    const items = getState().cart.orders.map((item) => ({
-        id: item.id,
-        price: item.price,
-        count: item.amount,
-    }));
+    const owner = selectOwner(getState());
+    const items = selectOrdersOnServer(getState());
+
     const total: TotalOrder = { owner, items };
 
     const reqObj: RequestObj = {

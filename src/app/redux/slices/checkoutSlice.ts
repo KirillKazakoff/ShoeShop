@@ -31,6 +31,11 @@ export const checkoutSlice = createSlice({
 });
 
 export const { changeInput, updateForm, refreshForm } = checkoutSlice.actions;
+
 export const selectCheckout = (state: RootState) => state.checkout;
+export const selectOwner = (state: RootState) => ({
+    phone: state.checkout.phone,
+    address: state.checkout.address,
+});
 
 export default checkoutSlice.reducer;

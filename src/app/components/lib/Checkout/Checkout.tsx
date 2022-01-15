@@ -1,9 +1,7 @@
 import React from 'react';
 import { Form, Row } from 'react-bootstrap';
 
-import { TotalOrder } from '../../../redux/dataTypes';
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
-import { selectOrders } from '../../../redux/slices/cartSlice';
 import { selectCheckout } from '../../../redux/slices/checkoutSlice';
 import useChange from '../../../redux/useChange';
 import { postTotalOrder } from '../../../thunk/thunkApi';
@@ -22,9 +20,7 @@ export default function Checkout() {
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
-        const owner = { phone, address };
-        dispatch(postTotalOrder(owner));
+        dispatch(postTotalOrder());
     };
 
     return (
