@@ -7,10 +7,18 @@ export type OnChangeField = (event: React.ChangeEvent<HTMLInputElement>) => void
 export default function useChange() {
     const dispatch = useAppDispatch();
 
-    const onChange: OnChangeField = (event) => {
+    const getInputError = (input: HTMLInputElement) => {
+        const field = Object.keys(ValidityState.prototype).find(
+            (key) => input.validity[key],
+        );
+    };
+
+    const onChange: OnChangeField = (e) => {
+        const field = e.currentTarget;
+
         const changedInput = {
-            name: event.currentTarget.name,
-            value: event.currentTarget.value,
+            name: e.currentTarget.name,
+            value: e.currentTarget.value,
         };
         dispatch(changeInput(changedInput));
     };

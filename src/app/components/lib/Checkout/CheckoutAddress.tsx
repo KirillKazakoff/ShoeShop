@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import Feedback from 'react-bootstrap/esm/Feedback';
 import { OnChangeField } from '../../../redux/useChange';
 
 type CheckoutAddressProps = { onChange: OnChangeField; address: string };
@@ -15,6 +16,7 @@ export default function CheckoutAddress({ onChange, address }: CheckoutAddressPr
                 onChange={onChange}
                 required
             />
+            <Feedback>Good</Feedback>
         </Form.Group>
     );
 }

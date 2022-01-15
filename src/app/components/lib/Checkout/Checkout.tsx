@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Row } from 'react-bootstrap';
 
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
@@ -17,14 +17,27 @@ export default function Checkout() {
     const { address, phone, agreement } = inputs;
 
     const onChange = useChange();
+    const [validated, setValidated] = useState(false);
 
     const onSubmit = (e: React.FormEvent) => {
+        const form = e.currentTarget;
+
         e.preventDefault();
+        if (form.checkValidity() === false) {
+            console.log('what');
+        }
+
         dispatch(postTotalOrder());
+        setValidated(true);
     };
 
     return (
-        <Form className='border rounded p-4 w-50 m-auto valid' onSubmit={onSubmit}>
+        <Form
+            noValidate
+            validated={validated}
+            className='border rounded p-4 w-50 m-auto'
+            onSubmit={onSubmit}
+        >
             <Row className='gy-3 mb-3'>
                 <CheckoutPhone onChange={onChange} phone={phone} />
                 <CheckoutAddress onChange={onChange} address={address} />

@@ -9,8 +9,8 @@ import {
 } from '../redux/slices/statusSlice';
 import { AppThunk } from '../redux/store';
 import { request, getItemsUrl, RequestObj } from './thunkUtils';
-import { TotalOrder, Owner } from '../redux/dataTypes';
-import { selectOrders, selectOrdersOnServer } from '../redux/slices/cartSlice';
+import { TotalOrder } from '../redux/dataTypes';
+import { selectOrdersOnServer } from '../redux/slices/cartSlice';
 import { selectOwner } from '../redux/slices/checkoutSlice';
 
 type GetItemsType = (categoryId: number, offset?: number) => AppThunk<Promise<boolean>>;
@@ -80,7 +80,6 @@ export const postTotalOrder = (): AppThunk => async (dispatch, getState) => {
 
     const owner = selectOwner(getState());
     const items = selectOrdersOnServer(getState());
-
     const total: TotalOrder = { owner, items };
 
     const reqObj: RequestObj = {
@@ -94,9 +93,11 @@ export const postTotalOrder = (): AppThunk => async (dispatch, getState) => {
             body: JSON.stringify(total),
         },
     };
+
     const res = await dispatch(request(reqObj, setTotalOrderStatus));
 
     if (!res) return false;
+
     dispatch(setTotalOrderStatus('loaded'));
     return true;
 };
