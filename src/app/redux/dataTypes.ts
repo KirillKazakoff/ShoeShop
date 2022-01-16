@@ -44,9 +44,11 @@ export type CategoryType = {
 };
 
 // InputState
-export type InputState = {
+export type InputField = {
     name: string;
     value: string;
+    isValid: boolean | undefined;
+    error: string | undefined;
 };
 
 // totalOrder

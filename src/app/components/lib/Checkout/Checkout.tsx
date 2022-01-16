@@ -14,19 +14,21 @@ import CheckoutPhone from './CheckoutPhone';
 export default function Checkout() {
     const dispatch = useAppDispatch();
     const inputs = useAppSelector(selectCheckout);
-    const { address, phone, agreement } = inputs;
+    const { address, phone } = inputs;
 
-    const onChange = useChange();
+    const [onChange, onBlur] = useChange();
     const [validated, setValidated] = useState(false);
 
     const onSubmit = (e: React.FormEvent) => {
-        const form = e.currentTarget;
+        const form = e.currentTarget as HTMLFormElement;
 
         e.preventDefault();
         if (form.checkValidity() === false) {
-            console.log('what');
+            console.log('hahaa');
+            return;
         }
 
+        console.log('bruh');
         dispatch(postTotalOrder());
         setValidated(true);
     };
@@ -39,9 +41,15 @@ export default function Checkout() {
             onSubmit={onSubmit}
         >
             <Row className='gy-3 mb-3'>
-                <CheckoutPhone onChange={onChange} phone={phone} />
-                <CheckoutAddress onChange={onChange} address={address} />
-                <CheckoutAgree onChange={onChange} agreement={agreement} />
+                <CheckoutPhone
+                    onChange={onChange} phone={phone}
+                    onBlur={onBlur}
+                />
+                <CheckoutAddress
+                    onChange={onChange} address={address}
+                    onBlur={onBlur}
+                />
+                <CheckoutAgree />
             </Row>
             <CheckoutSubmit>Оформить</CheckoutSubmit>
         </Form>

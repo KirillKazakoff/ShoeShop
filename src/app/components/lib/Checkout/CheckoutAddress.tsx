@@ -1,22 +1,34 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import Feedback from 'react-bootstrap/esm/Feedback';
-import { OnChangeField } from '../../../redux/useChange';
 
-type CheckoutAddressProps = { onChange: OnChangeField; address: string };
+import { OnBlurField, OnChangeField } from '../../../redux/useChange';
+import { InputState } from '../../../redux/slices/checkoutSlice';
+import CheckoutField from './CheckoutField';
+import CheckoutFeedback from './CheckoutFeedback';
 
-export default function CheckoutAddress({ onChange, address }: CheckoutAddressProps) {
+type CheckoutAddressProps = {
+    onChange: OnChangeField;
+    onBlur: OnBlurField;
+    address: InputState;
+};
+
+export default function CheckoutAddress(props: CheckoutAddressProps) {
+    const { onChange, onBlur, address } = props;
+
     return (
         <Form.Group controlId='address'>
             <Form.Label>Адрес доставки</Form.Label>
-            <Form.Control
-                placeholder='Адрес'
+            <CheckoutField
+                inputState={address}
+                placeholder='Ваш адрес'
                 name='address'
-                value={address}
                 onChange={onChange}
+                onBlur={onBlur}
                 required
             />
-            <Feedback>Good</Feedback>
+
+            <CheckoutFeedback error={address.error} name='address' />
         </Form.Group>
     );
 }
