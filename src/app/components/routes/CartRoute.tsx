@@ -8,6 +8,10 @@ import Checkout from '../lib/Checkout/Checkout';
 
 export default function CartRoute() {
     const orders = useAppSelector(selectOrders);
+
+    if (orders.length === 0) {
+        return <h2 className='text-center h2'>Ваша корзина пуста</h2>;
+    }
     return (
         <div>
             <section className='cart'>

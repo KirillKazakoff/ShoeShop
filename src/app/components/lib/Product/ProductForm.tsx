@@ -8,6 +8,7 @@ import { useAppSelector, useAppDispatch } from '../../../redux/reduxHooks';
 import { selectActiveSize, selectAmount } from '../../../redux/slices/productFormSlice';
 import BigRedBtn from '../Common/BigRedBtn';
 import { addOrder } from '../../../redux/slices/cartSlice';
+import { setCartStatus } from '../../../redux/slices/statusSlice';
 
 type ProductFormProps = { product: ContentTypeFull };
 export default function ProductForm({ product }: ProductFormProps) {
@@ -30,6 +31,7 @@ export default function ProductForm({ product }: ProductFormProps) {
             amount,
         };
         dispatch(addOrder(order));
+        dispatch(setCartStatus('full'));
     };
 
     return (
