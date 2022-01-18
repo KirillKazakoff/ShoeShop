@@ -1,16 +1,22 @@
 /* eslint-disable react/require-default-props */
-import React from 'react';
+import React, { HTMLProps } from 'react';
 
-type ControlsIconProps = {
-    id?: string;
-    cls?: string;
-    children?: React.ReactNode;
-};
+type ControlsIconProps = HTMLProps<HTMLButtonElement>;
 
-export default function ControlsIcon({ id, cls, children }: ControlsIconProps) {
+export default function ControlsIcon(props: ControlsIconProps) {
+    const {
+        id, className, children, onClick,
+    } = props;
+
     return (
-        <div id={id} className={`header-controls-pic ${cls}`}>
+        <button
+            {...props}
+            id={id}
+            className={`header-controls-pic ${className}`}
+            onClick={onClick}
+            type='button'
+        >
             {children}
-        </div>
+        </button>
     );
 }

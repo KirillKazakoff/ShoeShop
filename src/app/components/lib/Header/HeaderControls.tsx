@@ -1,16 +1,15 @@
 import React from 'react';
-import { Form, Stack } from 'react-bootstrap';
+import { Stack } from 'react-bootstrap';
 import CartIcon from './CartIcon';
-import ControlsIcon from './ControlsIcon';
+import Search from './Search';
+import SearchIcon from './SearchIcon';
 
 export default function HeaderControls() {
     return (
         <Stack direction='horizontal' gap={3}>
-            <ControlsIcon id='search-expander' cls='header-controls-search' />
+            <SearchIcon />
             <CartIcon />
-            <Form hidden className='header-controls-search-form'>
-                <Form.Control placeholder='Поиск' />
-            </Form>
+            <Search />
         </Stack>
     );
 }

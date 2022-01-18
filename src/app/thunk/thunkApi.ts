@@ -1,4 +1,4 @@
-import { refreshProductForm, setCurrentProduct } from '../redux/slices/productFormSlice';
+import { setCurrentProduct } from '../redux/slices/productFormSlice';
 import { setCategories, setItems, setTopSalesItems } from '../redux/slices/contentSlice';
 import {
     setCategoriesStatus,
@@ -13,12 +13,16 @@ import { TotalOrder } from '../redux/dataTypes';
 import { selectOrdersOnServer } from '../redux/slices/cartSlice';
 import { selectOwner } from '../redux/slices/checkoutSlice';
 
-type GetItemsType = (categoryId: number, offset?: number) => AppThunk<Promise<boolean>>;
+type GetItemsType = (
+    categoryId: number,
+    offset?: number,
+    q?: string
+) => AppThunk<Promise<boolean>>;
 
-export const getItems: GetItemsType = (categoryId, offset) => async (dispatch) => {
+export const getItems: GetItemsType = (categoryId, offset, q) => async (dispatch) => {
     dispatch(setItemsStatus('loading'));
 
-    const url = getItemsUrl(categoryId, offset);
+    const url = getItemsUrl(categoryId, offset, q);
 
     const reqObj = { url, settings: undefined };
     const res = await dispatch(request(reqObj, setItemsStatus));

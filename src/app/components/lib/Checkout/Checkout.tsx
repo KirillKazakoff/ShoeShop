@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Row } from 'react-bootstrap';
 
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
-import { refreshCheckout, selectCheckout } from '../../../redux/slices/checkoutSlice';
+import { selectCheckout } from '../../../redux/slices/checkoutSlice';
 import useChange from '../../../redux/useChange';
 import { postTotalOrder } from '../../../thunk/thunkApi';
 

@@ -10,7 +10,7 @@ export default function CartIcon() {
 
     return (
         <NavLink to='/cart'>
-            <ControlsIcon cls='header-controls-cart'>
+            <ControlsIcon className='header-controls-cart'>
                 {orders.length === 0 ? null : (
                     <Badge className='header-controls-cart-full'>{orders.length}</Badge>
                 )}

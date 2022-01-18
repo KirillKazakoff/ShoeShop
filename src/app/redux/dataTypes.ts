@@ -44,9 +44,12 @@ export type CategoryType = {
 };
 
 // InputState
-export type InputField = {
+export type InputDefault = {
     name: string;
     value: string;
+};
+
+export type InputField = InputDefault & {
     isValid: boolean | undefined;
     error: string | undefined;
 };

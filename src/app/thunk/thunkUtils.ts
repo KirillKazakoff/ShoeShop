@@ -23,17 +23,18 @@ type RequestType = (
 export const request: RequestType = (reqObj, setStatus) => async (dispatch) => {
     await timeoutMock();
 
-    const res = await fetch(`${baseUrl}/api/${reqObj.url}`, reqObj.settings);
-    if (!res.ok) {
+    try {
+        const res = await fetch(`${baseUrl}/api/${reqObj.url}`, reqObj.settings);
+        if (!res.ok) throw new Error(res.statusText);
+        return res;
+    } catch (e) {
         dispatch(setStatus('failed'));
         return false;
     }
-
-    return res;
 };
 
-export function getItemsUrl(categoryId: number, offset?: number) {
-    const params = [{ categoryId }, { offset }];
+export function getItemsUrl(categoryId: number, offset?: number, q?: string) {
+    const params = [{ categoryId }, { offset }, { q }];
 
     const searchParams = new URLSearchParams();
     params.forEach((param) => {
