@@ -1,24 +1,22 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
-type AboutRProps = {};
-
-export default function AboutR({}: AboutRProps) {
+export default function AboutR() {
     return (
         <Container>
             <Row>
                 <Col>
-                    <section className="top-sales fs-5">
-                        <h2 className="text-center h2">О магазине</h2>
-                        <p className="pb-3">
+                    <section className='top-sales fs-5'>
+                        <h2 className='text-center h2'>О магазине</h2>
+                        <p className='pb-3'>
                             В Интернете можно встретить немало магазинов, предлагающих
                             аксессуары. Но именно к нам хочется возвращаться снова и
                             снова.
                         </p>
-                        <h4 className="h4 text-center pb-3">
+                        <h4 className='h4 text-center pb-3'>
                             Мы предлагаем вам особые условия:
                         </h4>
-                        <ol className="pb-3">
+                        <ol className='pb-3'>
                             <li>
                                 Индивидуальный подход специалиста. Когда поступает новая
                                 коллекция обуви весна-лето или же коллекция обуви
