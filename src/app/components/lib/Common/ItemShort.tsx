@@ -21,7 +21,7 @@ export default function ItemShort({ content }: ItemShortProps) {
                 <Card.Text className='w-100'>{content.price}</Card.Text>
             </Card.Body>
             <Card.Footer>
-                <NavLink to={`product/${id}`}>
+                <NavLink to={`/product/${id}`}>
                     <Button variant='outline-secondary' className='align-self-end'>
                         Заказать
                     </Button>

@@ -31,11 +31,16 @@ export const productFormSlice = createSlice({
         setActiveSize: (state, action: PayloadAction<string>) => {
             state.activeSize = action.payload;
         },
+        refreshProductForm: () => initialState,
     },
 });
 
 export const {
-    setCurrentProduct, increase, decrease, setActiveSize,
+    setCurrentProduct,
+    increase,
+    decrease,
+    setActiveSize,
+    refreshProductForm,
 } = productFormSlice.actions;
 
 export const selectCurrentProduct = (state: RootState) => state.productForm.currentProduct;

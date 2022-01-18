@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Row } from 'react-bootstrap';
 
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
-import { selectCheckout } from '../../../redux/slices/checkoutSlice';
+import { refreshCheckout, selectCheckout } from '../../../redux/slices/checkoutSlice';
 import useChange from '../../../redux/useChange';
 import { postTotalOrder } from '../../../thunk/thunkApi';
 
@@ -14,6 +14,7 @@ import CheckoutPhone from './CheckoutPhone';
 export default function Checkout() {
     const dispatch = useAppDispatch();
     const inputs = useAppSelector(selectCheckout);
+
     const { address, phone } = inputs;
 
     const [onChange, onBlur] = useChange();
@@ -23,14 +24,15 @@ export default function Checkout() {
         const form = e.currentTarget as HTMLFormElement;
 
         e.preventDefault();
+
         if (form.checkValidity() === false) {
+            setValidated(true);
             console.log('hahaa');
             return;
         }
-
         console.log('bruh');
+
         dispatch(postTotalOrder());
-        setValidated(true);
     };
 
     return (

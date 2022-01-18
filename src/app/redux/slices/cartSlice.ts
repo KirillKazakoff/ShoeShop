@@ -33,10 +33,11 @@ export const cartSlice = createSlice({
 
             state.orders.splice(index, 1);
         },
+        refreshOrders: () => initialState,
     },
 });
 
-export const { addOrder, deleteOrder } = cartSlice.actions;
+export const { addOrder, deleteOrder, refreshOrders } = cartSlice.actions;
 export const selectOrders = (state: RootState) => state.cart.orders;
 export const selectOrdersOnServer = (state: RootState) => state.cart.orders.map((item) => ({
     id: item.id,

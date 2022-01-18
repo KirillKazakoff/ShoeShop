@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 
 export type Status = 'idle' | 'loading' | 'loaded' | 'failed';
-type CartStatus = 'empty' | 'full';
 
 export type StatusState = {
     productFormStatus: Status;
@@ -11,7 +10,7 @@ export type StatusState = {
     itemsStatus: Status;
     categoriesStatus: Status;
     totalOrderStatus: Status;
-    cartStatus: CartStatus;
+    cartStatus: Status;
 };
 
 const initialState: StatusState = {
@@ -20,7 +19,7 @@ const initialState: StatusState = {
     itemsStatus: 'idle',
     categoriesStatus: 'idle',
     totalOrderStatus: 'idle',
-    cartStatus: 'empty',
+    cartStatus: 'idle',
 };
 
 export const statusSlice = createSlice({
@@ -42,7 +41,7 @@ export const statusSlice = createSlice({
         setTotalOrderStatus: (state, action: PayloadAction<Status>) => {
             state.totalOrderStatus = action.payload;
         },
-        setCartStatus: (state, action: PayloadAction<CartStatus>) => {
+        setCartStatus: (state, action: PayloadAction<Status>) => {
             state.cartStatus = action.payload;
         },
     },
@@ -57,7 +56,7 @@ export const {
     setCartStatus,
 } = statusSlice.actions;
 
-export const selectFormStatus = (state: RootState) => state.statuses.productFormStatus;
+export const selectProductFormStatus = (state: RootState) => state.statuses.productFormStatus;
 export const selectItemsStatus = (state: RootState) => state.statuses.itemsStatus;
 export const selectCategoriesStatus = (state: RootState) => state.statuses.categoriesStatus;
 export const selectTopSalesItemsStatus = (state: RootState) => state.statuses.topSalesItemsStatus;

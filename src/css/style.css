@@ -122,6 +122,12 @@ section {
     background: linear-gradient(270deg, rgba(161, 179, 191, 0.8) 72.59%, rgba(161, 179, 191, 0) 98.05%);
 }
 
+.preloader-container {
+    display: flex;
+    align-items: center;
+    min-height: 600px;
+}
+
 /* Preloader */
 .preloader {
     margin: 10px auto;
@@ -185,12 +191,16 @@ section {
 }
 
 /* Catalog */
-.catalog {
+/* .catalog {
     min-height: 600px;
 }
 
 .catalog-items {
     min-height: 1070px;
+} */
+
+.checkout-input {
+    background-color: transparent !important;
 }
 
 .catalog-categories {

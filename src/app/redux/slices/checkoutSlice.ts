@@ -50,11 +50,11 @@ export const checkoutSlice = createSlice({
             return state;
         },
         updateForm: (state, action: PayloadAction<CheckoutState>) => action.payload,
-        refreshForm: () => initialState,
+        refreshCheckout: () => initialState,
     },
 });
 
-export const { changeInput, updateForm, refreshForm, setBlured } = checkoutSlice.actions;
+export const { changeInput, updateForm, refreshCheckout, setBlured } = checkoutSlice.actions;
 
 export const selectCheckout = (state: RootState) => state.checkout;
 export const selectOwner = (state: RootState) => ({

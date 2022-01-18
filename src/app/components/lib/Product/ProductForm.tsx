@@ -5,12 +5,16 @@ import { ContentTypeFull, ContentTypeCart } from '../../../redux/dataTypes';
 import Amount from './Amount';
 import Sizes from './Sizes';
 import { useAppSelector, useAppDispatch } from '../../../redux/reduxHooks';
-import { selectActiveSize, selectAmount } from '../../../redux/slices/productFormSlice';
+import {
+    refreshProductForm,
+    selectActiveSize,
+    selectAmount,
+} from '../../../redux/slices/productFormSlice';
 import BigRedBtn from '../Common/BigRedBtn';
 import { addOrder } from '../../../redux/slices/cartSlice';
-import { setCartStatus } from '../../../redux/slices/statusSlice';
 
 type ProductFormProps = { product: ContentTypeFull };
+
 export default function ProductForm({ product }: ProductFormProps) {
     const activeSize = useAppSelector(selectActiveSize);
     const amount = useAppSelector(selectAmount);
@@ -30,8 +34,8 @@ export default function ProductForm({ product }: ProductFormProps) {
             size: activeSize,
             amount,
         };
+        dispatch(refreshProductForm());
         dispatch(addOrder(order));
-        dispatch(setCartStatus('full'));
     };
 
     return (

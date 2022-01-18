@@ -6,14 +6,19 @@ import { useAppSelector, useAppDispatch } from '../../redux/reduxHooks';
 import SectionTitle from '../lib/Common/SectionTitle';
 import { selectCurrentProduct } from '../../redux/slices/productFormSlice';
 import { getItem } from '../../thunk/thunkApi';
-import { setProductFormStatus } from '../../redux/slices/statusSlice';
+import {
+    setProductFormStatus,
+    selectProductFormStatus,
+} from '../../redux/slices/statusSlice';
 import ItemTable from '../lib/Common/ItemTable';
 import ProductForm from '../lib/Product/ProductForm';
+import Preloader from '../lib/Common/Preloader';
 
 export default function ProductRoute() {
+    const params = useParams();
     const dispatch = useAppDispatch();
     const currentProduct = useAppSelector(selectCurrentProduct);
-    const params = useParams();
+    const status = useAppSelector(selectProductFormStatus);
 
     useEffect(() => {
         if (!params.id) return;
@@ -24,11 +29,13 @@ export default function ProductRoute() {
         };
     }, []);
 
+    if (status !== 'loaded') return <Preloader status={status} />;
     if (!currentProduct) return null;
+
     const { title, images } = currentProduct;
 
     return (
-        <section className='catalog-item'>
+        <section className='selected-item'>
             <SectionTitle>{title}</SectionTitle>
             <Row>
                 <Col className='col-5'>
