@@ -37,10 +37,10 @@ export default function ProductRoute() {
     return (
         <section className='selected-item'>
             <SectionTitle>{title}</SectionTitle>
-            <Row>
-                <Col className='col-5'>
+            <Row className='product-row'>
+                <Col className='col-5 h-80'>
                     <img
-                        src={images[0]} className='img-fluid'
+                        src={images[0]} className='img-fluid card-img-top'
                         alt={title}
                     />
                 </Col>

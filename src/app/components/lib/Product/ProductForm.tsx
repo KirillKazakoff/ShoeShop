@@ -38,6 +38,10 @@ export default function ProductForm({ product }: ProductFormProps) {
         dispatch(addOrder(order));
     };
 
+    if (product.sizes.every((size) => !size.avalible)) {
+        return <span className='d-block text-center'>Нет в наличии</span>;
+    }
+
     return (
         <>
             <Stack gap={2} className='align-items-center'>

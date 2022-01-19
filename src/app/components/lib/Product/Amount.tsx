@@ -26,7 +26,10 @@ export default function Amount({ amount }: AmountProps) {
                 >
                     {amount}
                 </Button>
-                <Button variant='secondary' onClick={onIncrease}>
+                <Button
+                    variant='secondary' onClick={onIncrease}
+                    disabled={amount === 10}
+                >
                     +
                 </Button>
             </ButtonGroup>

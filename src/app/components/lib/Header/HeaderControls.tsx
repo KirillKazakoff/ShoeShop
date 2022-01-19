@@ -6,10 +6,9 @@ import SearchIcon from './SearchIcon';
 
 export default function HeaderControls() {
     return (
-        <Stack direction='horizontal' gap={3}>
-            <SearchIcon />
-            <CartIcon />
+        <Stack direction='horizontal'>
             <Search />
+            <CartIcon />
         </Stack>
     );
 }

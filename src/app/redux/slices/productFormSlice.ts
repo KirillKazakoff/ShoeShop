@@ -23,6 +23,7 @@ export const productFormSlice = createSlice({
             state.currentProduct = action.payload;
         },
         increase: (state) => {
+            if (state.amount > 10) return;
             state.amount += 1;
         },
         decrease: (state) => {
