@@ -1,20 +1,33 @@
 import React from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
-import { useAppSelector } from '../../../redux/reduxHooks';
-import { selectSearch } from '../../../redux/slices/searchSlice';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
+import { selectSearch, setSearchHidden } from '../../../redux/slices/searchSlice';
 import useSearchChange from './useSearchChange';
 import useFilter from './useSearchSubmit';
-import SearchIcon from './SearchIcon';
+import SearchButton from './SearchButton';
 
 export default function Search() {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const searchState = useAppSelector(selectSearch);
     const onChange = useSearchChange();
     const filterItems = useFilter();
     const { value, isHidden } = searchState;
 
+    const searchSubmit = () => {
+        if (isHidden) dispatch(setSearchHidden(false));
+        else if (value.length === 0) dispatch(setSearchHidden(true));
+        else {
+            navigate('/catalog');
+            filterItems();
+        }
+        filterItems();
+    };
+
     const onSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        filterItems();
+        searchSubmit();
     };
 
     return (
@@ -32,7 +45,7 @@ export default function Search() {
                     />
                 </Col>
                 <Col xs={isHidden ? 12 : 2}>
-                    <SearchIcon />
+                    <SearchButton searchSubmit={searchSubmit} />
                 </Col>
             </Row>
         </Form>
