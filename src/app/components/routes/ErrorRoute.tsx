@@ -1,5 +1,14 @@
 import React from 'react';
+import { Row } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
 
 export default function ErrorRoute() {
-    return <div>Something went wrong bruh</div>;
+    return (
+        <Row className='error'>
+            <Col>
+                <h2 className='h2 text-center'>404 Error</h2>
+                <p className='pb-3 fs-3'>Something went wrong</p>
+            </Col>
+        </Row>
+    );
 }

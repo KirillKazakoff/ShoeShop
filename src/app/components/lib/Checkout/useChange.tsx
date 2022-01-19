@@ -6,6 +6,7 @@ import { changeInput, setBlured } from '../../../redux/slices/checkoutSlice';
 import { useAppDispatch } from '../../../redux/reduxHooks';
 import { InputField } from '../../../redux/dataTypes';
 
+export type OnSubmitForm = (e: React.FormEvent<HTMLFormElement>) => void;
 export type OnChangeField = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type OnBlurField = (e: React.FocusEvent<HTMLInputElement>) => void;
 

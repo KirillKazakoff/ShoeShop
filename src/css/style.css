@@ -190,18 +190,12 @@ section {
     min-height: 300px;
 }
 
-/* Catalog */
-/* .catalog {
+
+.error {
     min-height: 600px;
 }
 
-.catalog-items {
-    min-height: 1070px;
-} */
-
-.checkout-input {
-    background-color: transparent !important;
-}
+/* Catalog */
 
 .catalog-categories {
     font-size: 1.3rem;

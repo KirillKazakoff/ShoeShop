@@ -2,12 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ControlsIcon from './ControlsIcon';
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
-import {
-    selectSearch,
-    setSearchHidden,
-    setSearchFilter,
-} from '../../../redux/slices/searchSlice';
-import { setOffset } from '../../../redux/slices/contentSlice';
+import { selectSearch, setSearchHidden } from '../../../redux/slices/searchSlice';
+import useFilter from './useSearchSubmit';
 
 export default function SearchIcon() {
     const navigate = useNavigate();
@@ -15,14 +11,14 @@ export default function SearchIcon() {
 
     const searchState = useAppSelector(selectSearch);
     const { value, isHidden } = searchState;
+    const filterItems = useFilter();
 
     const onClick = () => {
         if (isHidden) dispatch(setSearchHidden(false));
         else if (value.length === 0) dispatch(setSearchHidden(true));
         else {
             navigate('/catalog');
-            dispatch(setOffset(0));
-            dispatch(setSearchFilter());
+            filterItems();
         }
     };
 
