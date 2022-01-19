@@ -27,10 +27,8 @@ export default function Checkout() {
 
         if (form.checkValidity() === false) {
             setValidated(true);
-            console.log('hahaa');
             return;
         }
-        console.log('bruh');
 
         dispatch(postTotalOrder());
     };
@@ -39,11 +37,18 @@ export default function Checkout() {
         <Form
             noValidate
             validated={validated}
-            className="border rounded p-4 w-50 m-auto"
-            onSubmit={onSubmit}>
-            <Row className="gy-3 mb-3">
-                <CheckoutPhone onChange={onChange} phone={phone} onBlur={onBlur} />
-                <CheckoutAddress onChange={onChange} address={address} onBlur={onBlur} />
+            className='border rounded p-4 w-50 m-auto'
+            onSubmit={onSubmit}
+        >
+            <Row className='gy-3 mb-3'>
+                <CheckoutPhone
+                    onChange={onChange} phone={phone}
+                    onBlur={onBlur}
+                />
+                <CheckoutAddress
+                    onChange={onChange} address={address}
+                    onBlur={onBlur}
+                />
                 <CheckoutAgree />
             </Row>
             <CheckoutSubmit>Оформить</CheckoutSubmit>
