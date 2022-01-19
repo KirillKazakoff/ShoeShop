@@ -2,7 +2,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-import { OnBlurField, OnChangeField } from '../../../redux/useChange';
+import { OnBlurField, OnChangeField } from './useChange';
 import { InputState } from '../../../redux/slices/checkoutSlice';
 import CheckoutField from './CheckoutField';
 import CheckoutFeedback from './CheckoutFeedback';

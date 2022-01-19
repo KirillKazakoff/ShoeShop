@@ -7,6 +7,7 @@ import {
     setSearchHidden,
     setSearchFilter,
 } from '../../../redux/slices/searchSlice';
+import { setOffset } from '../../../redux/slices/contentSlice';
 
 export default function SearchIcon() {
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function SearchIcon() {
         else if (value.length === 0) dispatch(setSearchHidden(true));
         else {
             navigate('/catalog');
+            dispatch(setOffset(0));
             dispatch(setSearchFilter());
         }
     };

@@ -2,9 +2,9 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
-import { changeInput, setBlured } from './slices/checkoutSlice';
-import { useAppDispatch } from './reduxHooks';
-import { InputField } from './dataTypes';
+import { changeInput, setBlured } from '../../../redux/slices/checkoutSlice';
+import { useAppDispatch } from '../../../redux/reduxHooks';
+import { InputField } from '../../../redux/dataTypes';
 
 export type OnChangeField = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type OnBlurField = (e: React.FocusEvent<HTMLInputElement>) => void;

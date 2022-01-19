@@ -3,7 +3,7 @@ import { Form, Row } from 'react-bootstrap';
 
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
 import { selectCheckout } from '../../../redux/slices/checkoutSlice';
-import useChange from '../../../redux/useChange';
+import useChange from './useChange';
 import { postTotalOrder } from '../../../thunk/thunkApi';
 
 import CheckoutSubmit from './CheckotSubmit';
@@ -39,18 +39,11 @@ export default function Checkout() {
         <Form
             noValidate
             validated={validated}
-            className='border rounded p-4 w-50 m-auto'
-            onSubmit={onSubmit}
-        >
-            <Row className='gy-3 mb-3'>
-                <CheckoutPhone
-                    onChange={onChange} phone={phone}
-                    onBlur={onBlur}
-                />
-                <CheckoutAddress
-                    onChange={onChange} address={address}
-                    onBlur={onBlur}
-                />
+            className="border rounded p-4 w-50 m-auto"
+            onSubmit={onSubmit}>
+            <Row className="gy-3 mb-3">
+                <CheckoutPhone onChange={onChange} phone={phone} onBlur={onBlur} />
+                <CheckoutAddress onChange={onChange} address={address} onBlur={onBlur} />
                 <CheckoutAgree />
             </Row>
             <CheckoutSubmit>Оформить</CheckoutSubmit>
