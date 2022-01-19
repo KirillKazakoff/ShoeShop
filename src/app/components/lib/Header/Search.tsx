@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/reduxHooks';
 import { selectSearch, setSearchInput } from '../../../redux/slices/searchSlice';
 import { OnChangeField } from '../../../redux/useChange';
 
 export default function Search() {
-    // const sera
     const dispatch = useAppDispatch();
     const searchState = useAppSelector(selectSearch);
     const { value, isHidden } = searchState;

@@ -5,11 +5,13 @@ import type { RootState } from '../store';
 
 type SearchState = {
     value: string;
+    filter: string;
     isHidden: boolean;
 };
 
 const initialState: SearchState = {
     value: '',
+    filter: '',
     isHidden: true,
 };
 
@@ -19,11 +21,10 @@ export const searchSlice = createSlice({
     reducers: {
         setSearchHidden: (state, action: PayloadAction<boolean>) => {
             state.isHidden = action.payload;
+            state.filter = '';
         },
-        toggleSearchHidden: (state) => {
-            // const {isHidden, value} = state;
-            // if (isHidden) state.isHidden = false;
-            // else if (value)
+        setSearchFilter: (state) => {
+            state.filter = state.value;
         },
         setSearchInput: (state, action: PayloadAction<string>) => {
             state.value = action.payload;
@@ -31,9 +32,9 @@ export const searchSlice = createSlice({
     },
 });
 
-export const { setSearchHidden, setSearchInput, toggleSearchHidden } = searchSlice.actions;
+export const { setSearchHidden, setSearchInput, setSearchFilter } = searchSlice.actions;
 
 export const selectSearch = (state: RootState) => state.search;
-export const selectFilter = (state: RootState) => state.search.value;
+export const selectFilter = (state: RootState) => state.search.filter;
 
 export default searchSlice.reducer;
