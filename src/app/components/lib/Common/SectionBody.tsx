@@ -7,7 +7,7 @@ export type SectionBodyProps = { contentArray: ContentType[] };
 
 export default function SectionBody({ contentArray }: SectionBodyProps) {
     const items = contentArray.map((item) => (
-        <Col className='col-4' key={item.id}>
+        <Col xs={4} key={item.id}>
             <ItemShort content={item} />
         </Col>
     ));
