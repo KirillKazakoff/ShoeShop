@@ -21,7 +21,7 @@ export default function CatalogItems({ activeCategory }: CatalogItemsProps) {
         dispatch(getItems(activeCategory.id, offset, q));
     }, [activeCategory, offset, q]);
 
-    // if (filter) items = items.filter((item) => item.title.includes(filter));
+    // activeCategory.id?
 
     if (status !== 'loaded') {
         return (

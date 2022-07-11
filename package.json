@@ -54,6 +54,7 @@
         "html-webpack-plugin": "^5.5.0",
         "jest": "^27.0.6",
         "mini-css-extract-plugin": "^1.6.0",
-        "url-loader": "^4.1.1"
+        "url-loader": "^4.1.1",
+        "push-dir": "^0.4.1"
     }
 }

@@ -42,7 +42,6 @@ export const checkoutSlice = createSlice({
             state[name].value = value;
             state[name].isValid = isValid;
             state[name].error = error;
-            // console.log(state[name].error, state[name].isValid, state[name].wasFocused);
         },
         setBlured: (state, action: PayloadAction<PayloadFocus>) => {
             const { name, wasFocused } = action.payload;

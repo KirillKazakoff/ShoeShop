@@ -2,7 +2,8 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { Status } from '../redux/slices/statusSlice';
 import { AppThunk } from '../redux/store';
 
-const baseUrl = 'http://localhost:7070';
+// const baseUrl = 'http://localhost:7070';
+const baseUrl = 'https://radiploma.herokuapp.com';
 
 function timeoutMock() {
     return new Promise((resolve) => {
